@@ -12,8 +12,7 @@ FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g
 
 SRCS	:=  main.cpp \
 			Zombie.cpp \
-			zombieHorde.cpp \
-			newZombie.cpp
+			zombieHorde.cpp
                           
 OBJS        := ${SRCS:.cpp=.o}
 
