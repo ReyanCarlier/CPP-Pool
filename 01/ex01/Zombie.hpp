@@ -17,7 +17,7 @@ class Zombie {
 		~Zombie(void);
 
 		std::string name;
-		void 		announce (void);
+		void 		announce(void);
 };
 
 #endif
