@@ -2,17 +2,17 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME        := phonebook
-CC         := c++
+NAME     := oPhone
+CC       := c++
 FLAGS    := -Wall -Wextra -Werror -std=c++98 -g
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      Contact.class.cpp \
-                          PhoneBook.class.cpp \
-                          phonebook.cpp \
+SRCS    :=	Contact.cpp \
+			PhoneBook.cpp \
+			oPhone.cpp \
                           
 OBJS        := ${SRCS:.cpp=.o}
 
