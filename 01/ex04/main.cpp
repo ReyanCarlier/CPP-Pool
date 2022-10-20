@@ -5,6 +5,14 @@
 // ofstream : out
 // fstream : in/out
 
+/**
+ * @brief Open a stream to filename on referenced std::fstream.
+ * If bool create, it'll create the file if not existing.
+ * @param filename 
+ * @param stream 
+ * @param create 
+ * @return int 
+ */
 int	open_stream(const char* filename, std::fstream& stream, bool create)
 {
 	if (create)
@@ -48,6 +56,15 @@ int	stream_length(std::fstream& stream)
 	return (length);
 }
 
+/**
+ * @brief Copy the content rode in stream1 in a string, replace every occurences
+ * of s1 by s2 in said string and then send it to stream2.
+ * 
+ * @param stream1 
+ * @param stream2 
+ * @param s1 
+ * @param s2 
+ */
 void	replace_sed(std::fstream& stream1, std::fstream& stream2, char *s1, char *s2)
 {
 	int			length = 0;
