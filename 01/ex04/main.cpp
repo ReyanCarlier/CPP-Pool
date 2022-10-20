@@ -95,17 +95,18 @@ int	main(int argc, char **argv)
 	if (argc != 4 || !argv[1][0] || !argv[2][0] || !argv[3][0])
 	{
 		std::cout << "Bad instructions. Parameters cannot be empty." << std::endl;
-		return (0);
+		return (1);
 	}
 	firstPath.append(argv[1]);
 	if (!open_stream(firstPath.c_str(), stream1, false))
-		return (0);
+		return (1);
 	newPath.append(firstPath);
 	newPath.append(".replace");
 	if (!open_stream(newPath.c_str(), stream2, true))
 	{
 		secure_close_stream(stream1);
-		return (0);
+		return (1);
 	}
 	replace_sed(stream1, stream2, argv[2], argv[3]);
+	return (0);
 }
