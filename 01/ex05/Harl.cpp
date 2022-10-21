@@ -34,10 +34,10 @@ void	Harl::complain(std::string level)
 {
 	int		index;
 
-	typedef	void (*Alert)();
+	typedef	void (Harl::*Alert)();
 	Alert	alert[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	std::istringstream(level) >> index;
 	if (index >= 0 && index <= 3)
-		alert[index]();
+		(this->*alert[index])();
 }
