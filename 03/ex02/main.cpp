@@ -8,7 +8,7 @@
 int	main(void)
 {
 	ScavTrap ST = ScavTrap("[SCAV]");
-	ScavTrap ST_copy = ST;
+	ScavTrap ST_copy(ST);
 
 	ClapTrap CT = ClapTrap("[CLAP]");
 	ClapTrap CT_copy = CT;
