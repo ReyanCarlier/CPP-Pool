@@ -26,7 +26,7 @@ class Fixed {
 		~Fixed(void); // Destructeur
 
 		// Opérateurs
-		void operator=(Fixed const & F); // Affectation
+		Fixed& operator=(Fixed const & F); // Affectation
 
 		// Fonctions membres
 		int					getRawBits(void) const; // Retourne la valeur du nombre à virgule fixe

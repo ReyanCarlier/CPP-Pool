@@ -72,7 +72,6 @@ void	Fixed::operator=(Fixed const & F)
 {
 	std::cout << "Copy assignement operator called" << std::endl;
 	this->value = F.getRawBits();
-
 }
 
 std::ostream & operator<<(std::ostream & o, Fixed const & F)

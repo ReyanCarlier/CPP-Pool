@@ -23,6 +23,7 @@ Animal::Animal(Animal const & A)
 Animal&	Animal::operator=(Animal const &F)
 {
 	this->type = F.type;
+	std::cout << "Animal operator= constructor." << std::endl;
 	return (*this);
 }
 

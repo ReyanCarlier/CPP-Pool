@@ -5,6 +5,10 @@
 #  include "Animal.hpp"
 # endif
 
+# ifndef BRAIN_HPP
+#  include "Brain.hpp"
+# endif
+
 class Cat : public Animal
 {
 	public:
@@ -12,7 +16,7 @@ class Cat : public Animal
 		Cat(const Cat &C);
 		~Cat(void);
 		Cat&	operator=(Cat const &C);
-	
+		Brain	*brain;
 		void	makeSound();
 };
 

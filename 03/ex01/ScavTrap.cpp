@@ -38,7 +38,7 @@
 		return ;
 	}
 
-	void	ScavTrap::operator=(ScavTrap const &ST)
+	ScavTrap&	ScavTrap::operator=(ScavTrap const &ST)
 	{
 		this->name = ST.name;
 		this->ad = ST.ad;
@@ -46,6 +46,7 @@
 		this->lp = ST.lp;
 
 		std::cout << "Operator = constructor of ScavTrap " << ST.name << " called." << std::endl;
+		return *this;
 	}
 
 	// Destructeur

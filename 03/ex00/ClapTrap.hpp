@@ -17,7 +17,7 @@ class ClapTrap {
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap &);
 		~ClapTrap(void);
-		void operator=(ClapTrap const & CT); // Affectation
+		ClapTrap& operator=(ClapTrap const & CT); // Affectation
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);

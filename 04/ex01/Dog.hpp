@@ -5,6 +5,10 @@
 #  include "Animal.hpp"
 # endif
 
+# ifndef BRAIN_HPP
+#  include "Brain.hpp"
+# endif
+
 class Dog : public Animal
 {
 	public:
@@ -12,7 +16,7 @@ class Dog : public Animal
 		Dog(const Dog &D);
 		~Dog(void);
 		Dog&	operator=(Dog const &D);
-	
+		Brain	*brain;
 		void	makeSound();
 };
 

@@ -38,7 +38,7 @@
 		return ;
 	}
 
-	void	FragTrap::operator=(FragTrap const &FT)
+	FragTrap&	FragTrap::operator=(FragTrap const &FT)
 	{
 		this->name = FT.name;
 		this->ad = FT.ad;
@@ -46,6 +46,7 @@
 		this->lp = FT.lp;
 
 		std::cout << "Operator = constructor of FragTrap " << FT.name << " called." << std::endl;
+		return (*this);
 	}
 
 	// Destructeur

@@ -39,7 +39,7 @@
 		return ;
 	}
 
-	void	ClapTrap::operator=(ClapTrap const &CT)
+	ClapTrap&	ClapTrap::operator=(ClapTrap const &CT)
 	{
 		this->name = CT.name;
 		this->ad = CT.ad;
@@ -47,6 +47,7 @@
 		this->lp = CT.lp;
 
 		std::cout << "Operator = constructor of ClapTrap " << CT.name << " called." << std::endl;
+		return (*this);
 	}
 
 	// Destructeur

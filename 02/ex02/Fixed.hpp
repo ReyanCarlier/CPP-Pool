@@ -28,7 +28,7 @@ class Fixed {
 
 		// SURCHARGES OPERATEURS
 			// Affectation
-			void operator=(Fixed const & F); 
+			Fixed& operator=(Fixed const & F); 
 
 			// Comparaisons
 			bool operator>(Fixed const & F);

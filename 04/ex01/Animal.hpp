@@ -1,6 +1,10 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
+# ifndef BRAIN_HPP
+#  include "Brain.hpp"
+# endif
+
 # ifndef STRING_HPP
 #  define STRING_HPP
 #  include <string>
@@ -20,6 +24,8 @@ class Animal {
 
 		std::string const& getType(void);
 		void		makeSound(void);
+	private:
+		Brain *brain;
 	protected:
 		std::string type;
 };

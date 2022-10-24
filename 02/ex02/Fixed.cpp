@@ -71,9 +71,10 @@
 // SURCHARGE OPERATEURS
 
 	// Assignation
-	void	Fixed::operator=(Fixed const & F)
+	Fixed&	Fixed::operator=(Fixed const & F)
 	{
 		this->value = F.getRawBits();
+		return (*this);
 	}
 
 	// Comparaisons
