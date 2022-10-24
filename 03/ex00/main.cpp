@@ -24,7 +24,7 @@ int	main(void)
 	CT2.attack("Patrick");
 	CT2.beRepaired(3);
 	CT2.takeDamage(6);
-	std::cout << "------ Patrick ne doit plus poivoir agir ------" << std::endl;
+	std::cout << "------ Patrick ne doit plus pouvoir agir ------" << std::endl;
 	CT2.beRepaired(10);
 	CT2.attack("Patrick");
 	CT2.takeDamage(10);
