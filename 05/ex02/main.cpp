@@ -1,9 +1,10 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
-	Bureaucrat john("John", 5);
+	Bureaucrat john("John", 150);
 
 	std::cout << john << std::endl;
 
@@ -20,16 +21,16 @@ int main()
 	
 	try
 	{
-		Form test("test", 151, 42);
+		ShrubberyCreationForm test("test");
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Cannot initialize test because " << e.what() << std::endl;
 	}
 
-	Form a("a");
-	Form b("b", 3, 3);
-	Form c("c", 3, 20);
+	ShrubberyCreationForm a("a");
+	ShrubberyCreationForm b("b");
+	ShrubberyCreationForm c("c");
 	std::cout << john << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;

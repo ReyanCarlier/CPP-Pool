@@ -2,11 +2,22 @@
 
 int main()
 {
-	Bureaucrat b("b", 2);
+	Bureaucrat *b;
+	Bureaucrat *c;
+	try
+	{
+		b = new Bureaucrat("b", 155);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete b;
+		return (1);
+	}
 	std::cout << b;
 	try
 	{
-		b.incrementGrade();
+		b->incrementGrade();
 		std::cout << b;
 	}
 	catch (std::exception &e)
@@ -15,7 +26,7 @@ int main()
 	}
 	try
 	{
-		b.incrementGrade();
+		b->incrementGrade();
 		std::cout << "NE DOIT PAS ETRE AFFICHE" << std::endl;
 		std::cout << b;
 	}
@@ -23,11 +34,18 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-
-	Bureaucrat c("c", 149);
 	try
 	{
-		c.decrementGrade();
+		c = new Bureaucrat("c", 149);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		return (1);
+	}
+	try
+	{
+		c->decrementGrade();
 		std::cout << c;
 	}
 	catch (std::exception &e)
@@ -36,7 +54,7 @@ int main()
 	}
 	try
 	{
-		c.decrementGrade();
+		c->decrementGrade();
 		std::cout << "NE DOIT PAS ETRE AFFICHE" << std::endl;
 		std::cout << c;
 	}
@@ -44,5 +62,7 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+	delete b;
+	delete c;
 	return (0);
 }

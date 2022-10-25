@@ -12,7 +12,8 @@ FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g2
 
 SRCS	:=  main.cpp \
 			Bureaucrat.cpp \
-			Form.cpp
+			Form.cpp \
+			ShrubberyCreationForm.cpp
 
 OBJS        := ${SRCS:.cpp=.o}
 
