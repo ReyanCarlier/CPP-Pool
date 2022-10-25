@@ -16,6 +16,13 @@ Cat::~Cat(void)
 	return ;
 }
 
+Cat::Cat(const std::string &type) : Animal::Animal(type)
+{
+	std::cout << "Generating a " << type << " Cat !" << std::endl;
+	this->type = type;
+	return ;
+}
+
 Cat::Cat(const Cat &C) : Animal::Animal(C)
 {
 	std::cout << "CopyCat !" << std::endl;
@@ -32,7 +39,7 @@ Cat&	Cat::operator=(const Cat &c)
 	return (*this);
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << "\"Meow meow\" - Cat'i Jackson, the snack stealer." << std::endl;
 	return ;
