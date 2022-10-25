@@ -29,7 +29,7 @@ Animal&	Animal::operator=(Animal const &F)
 
 void	Animal::makeSound(void)
 {
-	std::cout << "This is an animal, but which kind ? A platypus ?" << std::endl;
+	std::cout << "This is an animal sound, but which kind ? A platypus ?" << std::endl;
 	return ;
 }
 

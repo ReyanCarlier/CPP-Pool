@@ -11,15 +11,17 @@
 #  include <iostream>
 # endif
 
-class Animal {
+class Animal
+{
 	public:
 		Animal(void);
 		Animal(const Animal &A);
-		~Animal(void);
+		virtual ~Animal(void);
+		Animal(const std::string &type);
 		Animal&	operator=(Animal const & A);
 
-		std::string const& getType(void);
-		void		makeSound(void);
+		std::string 	getType(void) const;
+		virtual void	makeSound(void) const;
 	protected:
 		std::string type;
 };

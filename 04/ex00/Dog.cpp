@@ -14,10 +14,17 @@ Dog::~Dog(void)
 	return ;
 }
 
+Dog::Dog(const std::string &type) : Animal::Animal(type)
+{
+	std::cout << "Generating a " << type << " Doggo !" << std::endl;
+	this->type = type;
+	return ;
+}
+
 Dog::Dog(const Dog &D) : Animal::Animal(D)
 {
 	std::cout << "Another similar Doggo !" << std::endl;
-	this->type = "Dog";
+	this->type = D.type;
 	return ;
 }
 
@@ -28,8 +35,8 @@ Dog&	Dog::operator=(const Dog &d)
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
-	std::cout << "\"Bark Bark\" - Sno'op Doggo, the snack eater." << std::endl;
+	std::cout << "\"Bark Bark\" - Sno'op Doggo, the snack eater. (type : " << this->getType() << ")" << std::endl;
 	return ;
 }

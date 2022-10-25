@@ -1,33 +1,30 @@
-#include "Cat.h"
-#include "Dog.h"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-int	main(void)
+int main()
 {
-	Animal* meta = new Animal();
-	std::cout<< "type = " << meta->getType() << std::endl;
+	const Animal* meta = new Animal();
+	const Animal* i = new Cat("Siamese");
+	const Animal* j = new Dog("Golden Retriever");
+	const WrongAnimal* k = new WrongCat();
+	const WrongCat* l = new WrongCat("Black Tabby");
+
+	std::cout << std::endl << i->getType() << " " << std::endl;
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << k->getType() << " " << std::endl;
+	std::cout << l->getType() << " " << std::endl << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
 	meta->makeSound();
+	std::cout << std::endl;
+	k->makeSound();
+	l->makeSound();
+	std::cout << std::endl;
+
 	delete meta;
-
-	Dog *doggo = new Dog();
-	Dog doggo_copy = *doggo;
-
-	Cat *garfield = new Cat();
-	Cat garfield_copy = *garfield;
-
-	doggo->makeSound();
-	std::cout << "type = " << doggo->getType() << std::endl;
-	doggo_copy.makeSound();
-	std::cout << "type = " << doggo_copy.getType() << std::endl;
-	
-	garfield->makeSound();
-	std::cout << "type = " << garfield->getType() << std::endl;
-	garfield_copy.makeSound();
-	std::cout << "type = " << garfield_copy.getType() << std::endl;
-
-	delete doggo;
-	delete garfield;
-
-	doggo_copy.makeSound();
-	garfield_copy.makeSound();
-	return (0);
+	delete i;
+	delete j;
+	delete k;
+	delete l;
 }

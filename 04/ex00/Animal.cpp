@@ -7,6 +7,13 @@ Animal::Animal(void)
 	return ;
 }
 
+Animal::Animal(const std::string &type)
+{
+	std::cout << "Animal type " << type << " creator called." << std::endl;
+	this->type = type;
+	return ;
+}
+
 Animal::~Animal(void)
 {
 	std::cout << "Animal destructor called." << std::endl;
@@ -26,13 +33,13 @@ Animal&	Animal::operator=(Animal const &F)
 	return (*this);
 }
 
-void	Animal::makeSound(void)
+void	Animal::makeSound(void) const
 {
-	std::cout << "This is an animal, but which kind ? A platypus ?" << std::endl;
+	std::cout << "This is an animal sound, but which kind ? A platypus ?" << std::endl;
 	return ;
 }
 
-std::string	const& Animal::getType(void)
+std::string		Animal::getType(void) const
 {
 	return (this->type);
 }
