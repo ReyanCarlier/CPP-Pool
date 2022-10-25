@@ -19,5 +19,5 @@ class Dog : public Animal
 		Brain	*brain;
 		void	makeSound();
 };
-
+ 
 #endif
