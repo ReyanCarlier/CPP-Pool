@@ -1,33 +1,30 @@
-#include "Cat.h"
-#include "Dog.h"
 
-int	main(void)
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include <iomanip>
+
+int main()
 {
-	Animal* meta = new Animal();
-	std::cout<< "type = " << meta->getType() << std::endl;
-	meta->makeSound();
-	delete meta;
-
-	Dog *doggo = new Dog();
-	Dog doggo_copy = *doggo;
-
-	Cat *garfield = new Cat();
-	Cat garfield_copy = *garfield;
-
-	doggo->makeSound();
-	std::cout << "type = " << doggo->getType() << std::endl;
-	doggo_copy.makeSound();
-	std::cout << "type = " << doggo_copy.getType() << std::endl;
+	Animal* animals[10];
 	
-	garfield->makeSound();
-	std::cout << "type = " << garfield->getType() << std::endl;
-	garfield_copy.makeSound();
-	std::cout << "type = " << garfield_copy.getType() << std::endl;
-
-	delete doggo;
-	delete garfield;
-
-	doggo_copy.makeSound();
-	garfield_copy.makeSound();
-	return (0);
+	for (int i = 0; i < 10; i++)
+	{
+		if (i >= 5)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+	Cat copy(*(Cat *)animals[0]);
+	std::cout << std::endl;
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << std::setw(30) << std::left << copy.getBrain()->getIdea(i);
+		std::cout << std::setw(30) << std::left << ((Cat *)animals[0])->getBrain()->getIdea(i) << std::endl;
+	}
+	std::cout << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		delete animals[i];
+	}
+	// system("leaks Animals");
 }

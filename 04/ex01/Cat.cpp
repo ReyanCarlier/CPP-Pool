@@ -20,7 +20,7 @@ Cat::Cat(const Cat &C) : Animal::Animal(C)
 {
 	std::cout << "CopyCat !" << std::endl;
 	this->type = "Cat";
-	this->brain = new Brain();
+	this->brain = new Brain(*(C.brain));
 	return ;
 }
 
@@ -28,7 +28,7 @@ Cat&	Cat::operator=(const Cat &c)
 {
 	std::cout << "CopyCat operator =." << std::endl;
 	this->type = c.type;
-	this->brain = new Brain();
+	this->brain = new Brain(*(c.brain));
 	return (*this);
 }
 
@@ -36,4 +36,9 @@ void	Cat::makeSound(void)
 {
 	std::cout << "\"Meow meow\" - Cat'i Jackson, the snack stealer." << std::endl;
 	return ;
+}
+
+Brain	*Cat::getBrain(void)
+{
+	return (this->brain);
 }

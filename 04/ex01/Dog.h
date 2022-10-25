@@ -6,5 +6,6 @@
 # endif
 
 void	makeSound(void);
+Brain&	getBrain(void);
 
 #endif

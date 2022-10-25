@@ -20,7 +20,7 @@ Dog::Dog(const Dog &D) : Animal::Animal(D)
 {
 	std::cout << "Another similar Doggo !" << std::endl;
 	this->type = "Dog";
-	this->brain = new Brain();
+	this->brain = new Brain(*(D.brain));
 	return ;
 }
 
@@ -28,7 +28,7 @@ Dog&	Dog::operator=(const Dog &D)
 {
 	std::cout << "Doggo operator =." << std::endl;
 	this->type = D.type;
-	this->brain = new Brain();
+	this->brain = new Brain(*(D.brain));
 	return (*this);
 }
 
@@ -36,4 +36,9 @@ void	Dog::makeSound(void)
 {
 	std::cout << "\"Bark Bark\" - Sno'op Doggo, the snack eater." << std::endl;
 	return ;
+}
+
+Brain	*Dog::getBrain(void)
+{
+	return (this->brain);
 }

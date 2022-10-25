@@ -17,6 +17,7 @@ class Brain {
 		Brain(const Brain &);
 		~Brain(void);
 		Brain&	operator=(Brain const &);
+		std::string&	getIdea(int);
 	private:
 		std::string ideas[100];
 };

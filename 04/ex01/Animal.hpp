@@ -24,8 +24,6 @@ class Animal {
 
 		std::string const& getType(void);
 		void		makeSound(void);
-	private:
-		Brain *brain;
 	protected:
 		std::string type;
 };
