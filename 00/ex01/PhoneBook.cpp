@@ -15,7 +15,7 @@ PhoneBook::~PhoneBook(void)
 
 bool isNumber(std::string string)
 {
-    for (size_t i = 0; i < string.length() - 1; i++)
+    for (size_t i = 0; i < string.length(); i++)
         if (!std::isdigit(string[i]))
             return false;
     return true;
@@ -32,55 +32,61 @@ void PhoneBook::addContact()
         
     std::cout << "ADD CONTACT FORM" << std::endl;
 
-    std::cout << "Enter first name:" << std::endl;
-    std::getline(std::cin >> std::ws, tmp);
-    if (tmp.length() == 0)
-    {
-        std::cout << "Field cannot be empty." << std::endl;
-        return deleteContact(index);
-    }
-    this->contacts[index].setFirstName(tmp);
+	// FIRST NAME
+		std::cout << "Enter first name:" << std::endl;
+		std::getline(std::cin >> std::ws, tmp);
+		if (tmp.length() == 0)
+		{
+			std::cout << "Field cannot be empty." << std::endl;
+			return deleteContact(index);
+		}
+		this->contacts[index].setFirstName(tmp);
 
-    std::cout << "Enter last name:" << std::endl;
-    std::getline(std::cin >> std::ws, tmp);
-    if (tmp.length() == 0)
-    {
-        std::cout << "Field cannot be empty." << std::endl;
-        return deleteContact(index);
-    }
-    this->contacts[index].setLastName(tmp);
+	// LAST NAME
+		std::cout << "Enter last name:" << std::endl;
+		std::getline(std::cin >> std::ws, tmp);
+		if (tmp.length() == 0)
+		{
+			std::cout << "Field cannot be empty." << std::endl;
+			return deleteContact(index);
+		}
+		this->contacts[index].setLastName(tmp);
 
-    std::cout << "Enter nickname:" << std::endl;
-    std::getline(std::cin >> std::ws, tmp);
-    if (tmp.length() == 0)
-    {
-        std::cout << "Field cannot be empty." << std::endl;
-        return deleteContact(index);
-    }
-    this->contacts[index].setNickname(tmp);
+	// NICKNAME
+		std::cout << "Enter nickname:" << std::endl;
+		std::getline(std::cin >> std::ws, tmp);
+		if (tmp.length() == 0)
+		{
+			std::cout << "Field cannot be empty." << std::endl;
+			return deleteContact(index);
+		}
+		this->contacts[index].setNickname(tmp);
 
-    std::cout << "Enter phone number:" << std::endl;
-    std::getline(std::cin >> std::ws, tmp);
-    if (tmp.length() == 0)
-    {
-        std::cout << "Field cannot be empty." << std::endl;
-        return deleteContact(index);
-    }
-    if (!isNumber(tmp))
-    {
-        std::cout << "Phone number can only be made of digits." << std::endl;
-        return deleteContact(index);
-    }
-    this->contacts[index].setPhoneNumber(tmp);
-    std::cout << "Enter darkest secret:" << std::endl;
-    
-    std::getline(std::cin >> std::ws, tmp);
-    if (tmp.length() == 0)
-    {
-        std::cout << "Everyone has a secret, please, share next time." << std::endl;
-        return deleteContact(index);
-    }
-    this->contacts[index].setDarkestSecret(tmp);
+	// PHONE NUMBER
+		std::cout << "Enter phone number:" << std::endl;
+		std::getline(std::cin >> std::ws, tmp);
+		if (tmp.length() == 0)
+		{
+			std::cout << "Field cannot be empty." << std::endl;
+			return deleteContact(index);
+		}
+		if (!isNumber(tmp))
+		{
+			std::cout << "Phone number can only be made of digits." << std::endl;
+			return deleteContact(index);
+		}
+		this->contacts[index].setPhoneNumber(tmp);
+
+	// DARKEST SECRET
+		std::cout << "Enter darkest secret:" << std::endl;
+		
+		std::getline(std::cin >> std::ws, tmp);
+		if (tmp.length() == 0)
+		{
+			std::cout << "Everyone has a secret, please, share next time." << std::endl;
+			return deleteContact(index);
+		}
+		this->contacts[index].setDarkestSecret(tmp);
 
     this->nbContacts++;
     return ;
@@ -88,22 +94,37 @@ void PhoneBook::addContact()
 
 void PhoneBook::searchContact(void)
 {
-    int     index;
+    int     	index;
     std::string tmp;
 
-    if (this->nbContacts == 0)
-    {
-        std::cout << "No contacts." << std::endl;
-        return ;
-    }
-    displayContacts();
+	// CASE NO CONTACTS TO DISPLAY
+		if (this->nbContacts == 0)
+		{
+			std::cout << "You have no friend in your phonebook, sorry." << std::endl;
+			return ;
+		}
+
+	// SHOW EXISTING CONTACTS
+	displayContacts();
+
+	// ASK USER WHICH CONTACT TO DISPLAY
     std::cout << "Enter choosen index:" << std::endl;
     std::cin >> tmp;
+
+	// CHECK INDEX VALIDITY
     if (!isNumber(tmp))
+	{
+		std::cout << "Choosen index must be a number between 0 and " << this->nbContacts - 1 << "." << std::endl;
         return;
+	}
     index = atoi(tmp.c_str());
     if (index < 0 || index > this->nbContacts - 1)
+	{
+		std::cout << "Choosen index must be a number between 0 and " << this->nbContacts - 1 << "." << std::endl;
         return ;
+	}
+
+	// DISPLAY SELECTED CONTACT
     this->contacts[index].display();
     return ;
 }
@@ -154,10 +175,16 @@ void PhoneBook::displayContacts(void)
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param index 
+ */
 void PhoneBook::deleteContact(int index)
 {
-    if (this->nbContacts > 0)
+    if (this->nbContacts > 0 && index <= this->nbContacts - 1)
     {
+		std::cout << "Deleting contact[" << index << "]..." << std::endl;
         for (int i = index; i < this->nbContacts - 1; i++)
             this->contacts[i] = this->contacts[i + 1];
         this->nbContacts--;

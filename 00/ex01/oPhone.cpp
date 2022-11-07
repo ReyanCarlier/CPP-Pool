@@ -21,6 +21,8 @@ int main(void)
             phoneBook->searchContact();
         else if (command == "EXIT")
             break;
+		else if (command == "")
+			break;
     }
     delete[] phoneBook->contacts;
 	delete phoneBook;
