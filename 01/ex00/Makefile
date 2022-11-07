@@ -4,7 +4,7 @@
 
 NAME	:=	zombie
 CC		:=	c++
-FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g
+FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g3
  
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
