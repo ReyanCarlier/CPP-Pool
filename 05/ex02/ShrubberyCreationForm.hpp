@@ -5,6 +5,10 @@
 #  include "Form.hpp"
 # endif
 
+# ifndef FSTREAM_HPP
+#  include <fstream>
+# endif
+
 # ifndef BUREAUCRAT_HPP
 #  include "Bureaucrat.hpp"
 # endif
@@ -30,7 +34,10 @@ class ShrubberyCreationForm : public Form
 		int			getGradeToSign(void) const;
 		int			getGradeToExecute(void) const;
 		std::string getName(void) const;
-		
+		void		createTree(const std::string &) const;
+		std::fstream &open_stream(const std::string &);
+		void		secure_close_stream(std::fstream &);
+
 		class GradeTooHighException : public std::exception
 		{
 			public:

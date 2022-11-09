@@ -121,6 +121,52 @@ void		ShrubberyCreationForm::beSigned(const Bureaucrat &B)
 	(*this)._isSigned = true;
 }
 
+std::fstream &open_stream(const std::string &filename)
+{
+	std::fstream stream;
+	std::fstream &streamRef = stream;
+
+	stream.open(filename.c_str(), std::ios::out | std::ios::trunc);
+	if (!stream.is_open())
+		std::cout << "Couldn't open file " << filename << std::endl;
+	return (streamRef);
+}
+
+void		ShrubberyCreationForm::createTree(const std::string &target) const
+{
+	// CREATE THE FILE <target>_shrubbery in current directory and draw an ASCII Art Tree in it
+	std::fstream stream = open_stream(target + "_shrubbery");
+	std::string	 tree = "___\n\
+                _,-'\"\"   \"\"\"\"`--.\n\
+             ,-'          __,,-- \\\n\
+           ,'    __,--\"\"\"\"dF      )\n\
+          /   .-\"Hb_,--\"\"dF      /\n\
+        ,'       _Hb ___dF\"-._,-'\n\
+      ,'      _,-\"\"\"\"   \"\"--..__\n\
+     (     ,-'                  `.\n\
+      `._,'     _   _             ;\n\
+       ,'     ,' `-'Hb-.___..._,-'\n\
+       \\    ,'\"Hb.-'HH`-.dHF\"\n\
+        `--'   \"Hb  HH  dF\"\n\
+                \"Hb HH dF\n\
+                 \"HbHHdF\n\
+                  |HHHF\n\
+                  |HHH|\n\
+                  |HHH|\n\
+                  |HHH|\n\
+                  |HHH|\n\
+                  dHHHb\n\
+                .dFd|bHb.               o\n\
+      o       .dHFdH|HbTHb.          o /\n\
+\\  Y  |  \\__,dHHFdHH|HHhoHHb.__Krogg  Y\n\
+##########################################\n\
+	";
+	if (!stream.is_open())
+		return;
+	stream.write(tree.c_str(), tree.length());
+	stream.close();
+}
+
 std::ostream&	operator<<(std::ostream &out, ShrubberyCreationForm const &F)
 {
 	if (F.isSigned())

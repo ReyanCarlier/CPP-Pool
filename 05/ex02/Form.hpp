@@ -19,7 +19,7 @@ class Form
 		Form(void);
 		Form(const Form &F);
 		Form(const std::string &);
-		virtual ~Form(void);
+		virtual ~Form(void) = 0;
 		Form(const std::string &name, const int &gradeToSign, const int &gradeToExecute);
 		Form&	operator=(Form const & F);
 
