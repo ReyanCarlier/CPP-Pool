@@ -1,6 +1,10 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# ifndef IOMANIP_HPP
+#  include <iomanip>
+# endif
+
 # ifndef CONTACT_HPP
 #  include "Contact.hpp"
 # endif
@@ -28,10 +32,9 @@ class PhoneBook {
         void    displayContacts(void);
         void    displayContact(int);
         void    deleteContact(int);
-		void	deleteContacts(void);
 
 	private:
-        Contact *contacts;
+        Contact contacts[8];
         int     nbContacts;      
 };
 

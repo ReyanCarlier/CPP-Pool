@@ -2,7 +2,6 @@
 
 PhoneBook::PhoneBook(void)
 {
-    this->contacts = new Contact[8];
     this->nbContacts = 0;
     return ;
 }
@@ -140,8 +139,7 @@ void PhoneBook::displayContacts(void)
         element = this->contacts[i].getFirstName();
         elementLength = element.length();
         if (elementLength < 10)
-            for (size_t j = 0; j < 10 - elementLength; j++)
-                std::cout << ' ';
+            std::cout << std::setw(10 - elementLength);
         else if (elementLength > 10)
         {
             element.resize(10);
@@ -152,8 +150,7 @@ void PhoneBook::displayContacts(void)
         element = this->contacts[i].getLastName();
         elementLength = element.length();
         if (elementLength < 10)
-            for (size_t j = 0; j < 10 - elementLength; j++)
-                std::cout << ' ';
+            std::cout << std::setw(10 - elementLength);
         else if (elementLength > 10)
         {
             element.resize(10);
@@ -164,8 +161,7 @@ void PhoneBook::displayContacts(void)
         element = this->contacts[i].getNickname();
         elementLength = element.length();
         if (elementLength < 10)
-            for (size_t j = 0; j < 10 - elementLength; j++)
-                std::cout << ' ';
+            std::cout << std::setw(10 - elementLength);
         else if (elementLength > 10)
         {
             element.resize(10);
@@ -190,9 +186,4 @@ void PhoneBook::deleteContact(int index)
         this->nbContacts--;
     }
     return ;
-}
-
-void PhoneBook::deleteContacts(void)
-{
-	delete[] this->contacts;
 }

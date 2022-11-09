@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    PhoneBook *phoneBook = new PhoneBook();
+    PhoneBook phoneBook;
 
     while (1)
     {
@@ -16,15 +16,13 @@ int main(void)
         std::cin >> command;
 
         if (command == "ADD")
-            phoneBook->addContact();
+            phoneBook.addContact();
         else if (command == "SEARCH")
-            phoneBook->searchContact();
+            phoneBook.searchContact();
         else if (command == "EXIT")
             break;
 		else if (command == "")
 			break;
     }
-    phoneBook->deleteContacts();
-	delete phoneBook;
     return (0);
 }
