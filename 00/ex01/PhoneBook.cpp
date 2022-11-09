@@ -191,3 +191,8 @@ void PhoneBook::deleteContact(int index)
     }
     return ;
 }
+
+void PhoneBook::deleteContacts(void)
+{
+	delete[] this->contacts;
+}

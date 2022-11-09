@@ -24,7 +24,7 @@ int main(void)
 		else if (command == "")
 			break;
     }
-    delete[] phoneBook->contacts;
+    phoneBook->deleteContacts();
 	delete phoneBook;
     return (0);
 }

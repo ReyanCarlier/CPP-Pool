@@ -1,7 +1,9 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "Contact.hpp"
+# ifndef CONTACT_HPP
+#  include "Contact.hpp"
+# endif
 
 # ifndef IOSTREAM_HPP
 #  include <iostream>
@@ -26,7 +28,9 @@ class PhoneBook {
         void    displayContacts(void);
         void    displayContact(int);
         void    deleteContact(int);
+		void	deleteContacts(void);
 
+	private:
         Contact *contacts;
         int     nbContacts;      
 };
