@@ -87,6 +87,21 @@ const char* Form::AlreadySignedException::what() const throw()
 	return ("form is already signed");
 }
 
+Form::NotSignedYet::NotSignedYet(void)
+{
+	return ;
+}
+
+Form::NotSignedYet::~NotSignedYet(void) throw()
+{
+	return ;
+}
+
+const char* Form::NotSignedYet::what() const throw()
+{
+	return ("can't execute an unsigned form.");
+}
+
 std::string	Form::getName(void) const
 {
 	return (this->_name);

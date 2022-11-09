@@ -34,8 +34,14 @@ int main()
 	std::cout << john << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	john.signForm(a);
-	a.createTree(john, "a");
+	try {
+		//john.signForm(a);
+		a.createTree(john, "a");
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	john.signForm(b);
 	john.signForm(b);
 	

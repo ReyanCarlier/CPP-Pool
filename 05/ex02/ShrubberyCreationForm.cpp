@@ -112,6 +112,27 @@ const char* ShrubberyCreationForm::AlreadySignedException::what() const throw()
 	return ("form is already signed");
 }
 
+ShrubberyCreationForm::NotSignedYet::NotSignedYet(void)
+{
+	return ;
+}
+
+ShrubberyCreationForm::NotSignedYet::~NotSignedYet(void) throw()
+{
+	return ;
+}
+
+const char* ShrubberyCreationForm::NotSignedYet::what() const throw()
+{
+	return ("can't execute an unsigned form.");
+}
+
+
+/**
+ * @brief Sign Shrubbery' form if the Bureaucrat <B> has enough rights.
+ * 
+ * @param B 
+ */
 void		ShrubberyCreationForm::beSigned(const Bureaucrat &B)
 {
 	if (B.getGrade() > (*this).getGradeToSign())
@@ -121,13 +142,21 @@ void		ShrubberyCreationForm::beSigned(const Bureaucrat &B)
 	(*this)._isSigned = true;
 }
 
+/**
+ * @brief Create <<target>_shrubbery> file in current directory if it doesn't exist and draw
+ * an ASCII Art Tree in it.
+ * 
+ * @param slave 
+ * @param target 
+ */
 void		ShrubberyCreationForm::createTree(Bureaucrat &slave, const std::string &target)
 {
-	// CREATE THE FILE <target>_shrubbery in current directory and draw an ASCII Art Tree in it
 	std::fstream stream;
 	std::string to_append;
 
-	if (slave.getGrade() > this->getGradeToExecute())
+	if (not this->isSigned())
+		throw ShrubberyCreationForm::NotSignedYet();
+	if (slave.getGrade() > (*this).getGradeToExecute())
 		throw ShrubberyCreationForm::GradeTooLowException();
 
 	to_append.append(target);
