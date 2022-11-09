@@ -121,22 +121,25 @@ void		ShrubberyCreationForm::beSigned(const Bureaucrat &B)
 	(*this)._isSigned = true;
 }
 
-std::fstream &open_stream(const std::string &filename)
-{
-	std::fstream stream;
-	std::fstream &streamRef = stream;
-
-	stream.open(filename.c_str(), std::ios::out | std::ios::trunc);
-	if (!stream.is_open())
-		std::cout << "Couldn't open file " << filename << std::endl;
-	return (streamRef);
-}
-
-void		ShrubberyCreationForm::createTree(const std::string &target) const
+void		ShrubberyCreationForm::createTree(Bureaucrat &slave, const std::string &target)
 {
 	// CREATE THE FILE <target>_shrubbery in current directory and draw an ASCII Art Tree in it
-	std::fstream stream = open_stream(target + "_shrubbery");
-	std::string	 tree = "___\n\
+	std::fstream stream;
+	std::string to_append;
+
+	if (slave.getGrade() > this->getGradeToExecute())
+		throw ShrubberyCreationForm::GradeTooLowException();
+
+	to_append.append(target);
+	to_append.append("_shrubbery");
+	stream.open(to_append.c_str(), std::ios::out | std::ios::trunc);
+	std::cout << "try to open file : " << to_append << std::endl;
+	if (!stream.is_open())
+	{
+		std::cout << "Couldn't open file " << to_append << std::endl;
+		return;
+	}
+	std::string	 tree = "                      ___\n\
                 _,-'\"\"   \"\"\"\"`--.\n\
              ,-'          __,,-- \\\n\
            ,'    __,--\"\"\"\"dF      )\n\

@@ -4,7 +4,7 @@
 
 int main()
 {
-	Bureaucrat john("John", 150);
+	Bureaucrat john("John", 1);
 
 	std::cout << john << std::endl;
 
@@ -35,6 +35,7 @@ int main()
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	john.signForm(a);
+	a.createTree(john, "a");
 	john.signForm(b);
 	john.signForm(b);
 	

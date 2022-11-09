@@ -29,14 +29,13 @@ class ShrubberyCreationForm : public Form
 		~ShrubberyCreationForm(void);
 		ShrubberyCreationForm&	operator=(ShrubberyCreationForm const & F);
 
-		void		beSigned(const Bureaucrat &B);
-		bool		isSigned(void) const;
-		int			getGradeToSign(void) const;
-		int			getGradeToExecute(void) const;
-		std::string getName(void) const;
-		void		createTree(const std::string &) const;
-		std::fstream &open_stream(const std::string &);
-		void		secure_close_stream(std::fstream &);
+		void			beSigned(const Bureaucrat &B);
+		bool			isSigned(void) const;
+		int				getGradeToSign(void) const;
+		int				getGradeToExecute(void) const;
+		std::string 	getName(void) const;
+		void			createTree(Bureaucrat &slave, const std::string &);
+		void			secure_close_stream(std::fstream &);
 
 		class GradeTooHighException : public std::exception
 		{
