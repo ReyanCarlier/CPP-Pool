@@ -138,9 +138,8 @@ void PhoneBook::displayContacts(void)
         std::cout << i << " | ";
         element = this->contacts[i].getFirstName();
         elementLength = element.length();
-        if (elementLength < 10)
-            std::cout << std::setw(10);
-        else if (elementLength > 10)
+        std::cout << std::setw(10);
+        if (elementLength > 10)
         {
             element.resize(10);
             element.at(9) = '.';
@@ -149,9 +148,8 @@ void PhoneBook::displayContacts(void)
 
         element = this->contacts[i].getLastName();
         elementLength = element.length();
-        if (elementLength < 10)
-            std::cout << std::setw(10);
-        else if (elementLength > 10)
+        std::cout << std::setw(10);
+        if (elementLength > 10)
         {
             element.resize(10);
             element.at(9) = '.';
@@ -160,9 +158,8 @@ void PhoneBook::displayContacts(void)
 
         element = this->contacts[i].getNickname();
         elementLength = element.length();
-        if (elementLength < 10)
-            std::cout << std::setw(10);
-        else if (elementLength > 10)
+        std::cout << std::setw(10);
+        if (elementLength > 10)
         {
             element.resize(10);
             element.at(9) = '.';
