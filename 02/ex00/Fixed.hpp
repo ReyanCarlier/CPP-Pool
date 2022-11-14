@@ -17,8 +17,8 @@ class Fixed {
 		void				setRawBits(int const raw); // Initialise la valeur du nombre à virgule fixe avec celle passée en paramètre
 
 	private:
-		int					value;
-		static const int 	rawBits = 8;
+		int					rawBits;
+		static const int 	fractBits = 8;
 };
 
 #endif

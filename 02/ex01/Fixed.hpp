@@ -35,8 +35,8 @@ class Fixed {
 		int					toInt(void) const;
 
 	private:
-		int					value;
-		static const int 	rawBits = 8;
+		int					rawBits;
+		static const int 	fractBits = 8;
 };
 
 std::ostream & operator<<(std::ostream & o, Fixed const & F); // Insertion dans le flux

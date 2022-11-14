@@ -18,23 +18,23 @@
 // DE.CONSTRUCTEURS
 	Fixed::Fixed(void)
 	{
-		this->value = 0;
+		this->rawBits = 0;
 		return ;
 	}
 
 	Fixed::Fixed(const Fixed &f)
 	{
-		this->value = f.getRawBits();
+		this->rawBits = f.getRawBits();
 	}
 
 	Fixed::Fixed(const int i)
 	{
-		this->value = i << Fixed::rawBits;
+		this->rawBits = i << Fixed::fractBits;
 	}
 
 	Fixed::Fixed(const float f)
 	{
-		this->value = (int)roundf(f * (1 << Fixed::rawBits));
+		this->rawBits = (int)roundf(f * (1 << Fixed::fractBits));
 	}
 
 	// Destructeur
@@ -48,24 +48,24 @@
 	// Getter
 	int	Fixed::getRawBits(void) const
 	{
-		return (this->value);
+		return (this->rawBits);
 	}
 
 	// Setter
 	void	Fixed::setRawBits(int const raw)
 	{
-		this->value = raw;
+		this->rawBits = raw;
 	}
 
 	// Conversions
 	float	Fixed::toFloat(void) const
 	{
-		return ((float)(this->value / roundf((1 << Fixed::rawBits))));
+		return ((float)(this->rawBits / roundf((1 << Fixed::fractBits))));
 	}
 
 	int		Fixed::toInt(void) const
 	{
-		return ((int)((this->value) >> Fixed::rawBits));
+		return ((int)((this->rawBits) >> Fixed::fractBits));
 	}
 
 // SURCHARGE OPERATEURS
@@ -73,7 +73,7 @@
 	// Assignation
 	Fixed&	Fixed::operator=(Fixed const & F)
 	{
-		this->value = F.getRawBits();
+		this->rawBits = F.getRawBits();
 		return (*this);
 	}
 
@@ -132,27 +132,27 @@
 	// Dé/In.crémentation
 	Fixed	Fixed::operator++(void)
 	{
-		this->value += 1;
+		this->rawBits += 1;
 		return (*this);
 	}
 
 	Fixed	Fixed::operator--(void)
 	{
-		this->value -= 1;
+		this->rawBits -= 1;
 		return (*this);
 	}
 
 	Fixed	Fixed::operator++(int)
 	{
 		Fixed dump(*this);
-		this->value += 1;
+		this->rawBits += 1;
 		return (dump);
 	}
 
 	Fixed	Fixed::operator--(int)
 	{
 		Fixed dump(*this);
-		this->value -= 1;
+		this->rawBits -= 1;
 		return (dump);
 	}
 
