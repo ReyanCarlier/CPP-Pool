@@ -8,11 +8,11 @@
 
 class Fixed {
 	public:
-		Fixed(void); // Constructeur par défaut
-		Fixed(const Fixed&); // Constructeur par recopie	
-		~Fixed(void); // Destructeur
-		Fixed & operator=(Fixed const & F); // Opérateur d'affectation
-		// Fixed operator+(Fixed const & F) const; // Opérateur d'addition
+		Fixed(void);
+		Fixed(const Fixed&);
+		~Fixed(void);
+		Fixed & operator=(Fixed const & F);
+
 		int					getRawBits(void) const; // Retourne la valeur du nombre à virgule fixe
 		void				setRawBits(int const raw); // Initialise la valeur du nombre à virgule fixe avec celle passée en paramètre
 
