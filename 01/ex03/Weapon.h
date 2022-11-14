@@ -3,7 +3,7 @@
 
 #include "Weapon.hpp"
 
-std::string& getType();
+std::string& getType(void);
 void		 setType(std::string type);
 
 #endif

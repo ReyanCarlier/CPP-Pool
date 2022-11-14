@@ -1,5 +1,8 @@
 #include "Weapon.hpp"
-#include "Weapon.h"
+
+# ifndef WEAPON_H
+#  include "Weapon.h"
+# endif
 
 Weapon::Weapon(void)
 {

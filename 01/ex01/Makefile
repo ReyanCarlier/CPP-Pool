@@ -4,7 +4,7 @@
 
 NAME	:=	zombieHorde
 CC		:=	c++
-FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g
+FLAGS	:=	-Wall -Wextra -Werror -std=c++98
  
 ################################################################################
 #                                 PROGRAM'S SRCS                               #

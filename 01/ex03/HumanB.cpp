@@ -1,5 +1,13 @@
 #include "HumanB.hpp"
-#include <iostream>
+
+# ifndef WEAPON_H
+#  include "Weapon.h"
+# endif
+
+# ifndef IOSTREAM_HPP
+#  define IOSTREAM_HPP
+#  include <iostream>
+# endif
 
 HumanB::HumanB(std::string name)
 {
@@ -22,4 +30,9 @@ void	HumanB::attack(void)
 		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 	else
 		std::cout << this->name << " attacks with their nothingness." << std::endl; 
+}
+
+Weapon	&HumanB::getWeapon(void)
+{
+	return *(this->weapon);
 }

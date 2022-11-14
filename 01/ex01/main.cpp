@@ -3,10 +3,9 @@
 
 int	main(void)
 {
-	Zombie			*horde;
-	unsigned int	hordeSize = 1;
+	unsigned int	hordeSize = 100;
+	Zombie			*horde = zombieHorde(hordeSize, "MemberOfHorde");
 
-	horde = zombieHorde(hordeSize, "MemberOfHorde");
 	for (unsigned int i = 0; i < hordeSize; i++)
 		horde[i].announce();
 

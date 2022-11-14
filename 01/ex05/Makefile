@@ -4,7 +4,7 @@
 
 NAME	:=	harl
 CC		:=	c++
-FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g2
+FLAGS	:=	-Wall -Wextra -Werror -std=c++98
  
 ################################################################################
 #                                 PROGRAM'S SRCS                               #

@@ -1,6 +1,13 @@
 #include "HumanA.hpp"
-#include "Weapon.h"
-#include <iostream>
+
+# ifndef WEAPON_H
+#  include "Weapon.h"
+# endif
+
+# ifndef IOSTREAM_HPP
+#  define IOSTREAM_HPP
+#  include <iostream>
+# endif
 
 /**
  * @brief Destroy the Human A:: Human A object

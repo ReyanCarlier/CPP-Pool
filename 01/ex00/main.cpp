@@ -3,10 +3,9 @@
 
 int	main(void)
 {
-	Zombie *zombieOne;
-	Zombie *zombieThree = new Zombie("Three");
+	Zombie *zombieOne = new Zombie("ZombieOne");
+	Zombie *zombieThree = newZombie("Three");
 
-	zombieOne = newZombie("ZombieOne");
 	zombieOne->announce();
 
 	randomChump("ZombieTwo");
