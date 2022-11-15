@@ -57,7 +57,7 @@ class Fixed {
 			// Setter
 			void				setRawBits(int const raw); // Initialise la valeur du nombre à virgule fixe avec celle passée en paramètre
 			
-			// Conversion
+			// Conversions
 			float				toFloat(void) const;
 			int					toInt(void) const;
 

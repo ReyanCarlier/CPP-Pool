@@ -68,7 +68,7 @@
 		return ((int)((this->rawBits) >> Fixed::fractBits));
 	}
 
-// SURCHARGE OPERATEURS
+// SURCHARGES OPERATEURS
 
 	// Assignation
 	Fixed&	Fixed::operator=(Fixed const & F)
@@ -80,7 +80,7 @@
 	// Comparaisons
 	bool	Fixed::operator>(Fixed const & F)
 	{
-		return (this->toFloat() > F.toFloat());
+		return ((*this).toFloat() > F.toFloat());
 	}
 
 	bool	Fixed::operator<(Fixed const & F)
@@ -90,7 +90,7 @@
 
 	bool	Fixed::operator>=(Fixed const & F)
 	{
-		return (this->toFloat() >= F.toFloat());
+		return ((*this).toFloat() >= F.toFloat());
 	}
 
 	bool	Fixed::operator<=(Fixed const & F)
@@ -104,9 +104,9 @@
 	}
 
 	bool	Fixed::operator!=(Fixed const & F)
-{
-	return (this->toFloat() != F.toFloat());
-}
+	{
+		return (this->toFloat() != F.toFloat());
+	}
 
 	// Opérations
 	Fixed	Fixed::operator+(Fixed const & F)
@@ -177,7 +177,9 @@
 		return (F1.toFloat() > F2.toFloat() ? F1 : F2);
 	}
 
-	std::ostream & operator<<(std::ostream & o, Fixed const & F)
+// FLUX
+
+std::ostream & operator<<(std::ostream & o, Fixed const & F)
 {
 	o << F.toFloat();
 
