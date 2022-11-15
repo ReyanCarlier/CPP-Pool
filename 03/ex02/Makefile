@@ -4,7 +4,7 @@
 
 NAME	:=	clapTrap
 CC		:=	c++
-FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g2
+FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -Wno-shadow -Wshadow
  
 ################################################################################
 #                                 PROGRAM'S SRCS                               #

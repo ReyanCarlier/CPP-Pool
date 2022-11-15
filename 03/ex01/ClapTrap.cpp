@@ -1,4 +1,3 @@
-#include "ClapTrap.h"
 #include "ClapTrap.hpp"
 
 // DE.CONSTRUCTEURS
@@ -16,9 +15,9 @@
 	};
 
 	// Name
-	ClapTrap::ClapTrap(const std::string& name)
+	ClapTrap::ClapTrap(const std::string& _name)
 	{
-		this->name = name;
+		this->name = _name;
 		this->lp = 10;
 		this->ep = 10;
 		this->ad = 0;
@@ -55,6 +54,47 @@
 	{
 		std::cout << "Destruction of " << this->name << " ClapTrap." << std::endl;
 		return ;
+	}
+
+// GETTERS
+	const std::string &ClapTrap::getName(void)
+	{
+		return (this->name);
+	}
+
+	unsigned int ClapTrap::getLP(void)
+	{
+		return (this->lp);
+	}
+
+	unsigned int ClapTrap::getEP(void)
+	{
+		return (this->ep);
+	}
+
+	unsigned int ClapTrap::getAD(void)
+	{
+		return (this->ad);
+	}
+// SETTERS
+	void	ClapTrap::setName(const std::string &_name)
+	{
+		this->name = _name;
+	}
+
+	void	ClapTrap::setLP(unsigned int _lp)
+	{
+		this->lp = _lp;
+	}
+
+	void	ClapTrap::setEP(unsigned int _ep)
+	{
+		this->ep = _ep;
+	}
+
+	void	ClapTrap::setAD(unsigned int _ad)
+	{
+		this->ad = _ad;
 	}
 
 // FONCTIONS MEMBRES

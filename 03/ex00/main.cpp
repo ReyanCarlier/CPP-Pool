@@ -1,4 +1,3 @@
-#include "ClapTrap.h"
 #include "ClapTrap.hpp"
 
 int	main(void)
@@ -28,6 +27,5 @@ int	main(void)
 	CT2.beRepaired(10);
 	CT2.attack("Patrick");
 	CT2.takeDamage(10);
-
 	return (0);
 }

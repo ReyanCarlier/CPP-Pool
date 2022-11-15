@@ -1,7 +1,5 @@
-#include "ClapTrap.h"
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-#include "ScavTrap.h"
 
 int	main(void)
 {
