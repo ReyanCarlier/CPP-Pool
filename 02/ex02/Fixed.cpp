@@ -24,7 +24,8 @@
 
 	Fixed::Fixed(const Fixed &f)
 	{
-		this->rawBits = f.getRawBits();
+		(*this) = f;
+		return ;
 	}
 
 	Fixed::Fixed(const int i)
