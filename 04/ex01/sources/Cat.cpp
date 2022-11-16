@@ -1,4 +1,3 @@
-#include "Cat.h"
 #include "Cat.hpp"
 
 Cat::Cat(void)

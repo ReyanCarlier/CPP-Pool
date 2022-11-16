@@ -1,5 +1,10 @@
 #include "Brain.hpp"
 
+# ifndef STDLIB_HPP
+#  define STDLIB_HPP
+#  include <stdlib.h>
+# endif
+
 Brain::Brain(void)
 {
 	const std::string ideas[5] = {

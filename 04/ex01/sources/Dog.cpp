@@ -1,4 +1,3 @@
-#include "Dog.h"
 #include "Dog.hpp"
 
 Dog::Dog(void)
