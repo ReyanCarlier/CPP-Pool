@@ -11,6 +11,11 @@
 #  include <iostream>
 # endif
 
+# ifndef STDLIB_HPP
+#  define STDLIB_HPP
+#  include <stdlib.h>
+# endif
+
 class Brain {
 	public:
 		Brain(void);
