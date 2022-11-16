@@ -35,11 +35,14 @@ OBJS		=		$(patsubst %.cpp,$(OBJS_DIR)%.o,${SRCS_FILES})
 
 OBJS_DIR	= 		objects/
 
-OBJECT		=		0
+NEW_OBJS	=		0
 
 $(OBJS_DIR)%.o	: %.cpp
+	@if [ ! -e "$(OBJS_DIR)" ]; then mkdir -p $(OBJS_DIR); echo "$(GREEN)Creation ${CLR_RMV}of ${CYAN}objects ${CLR_RMV}directory ✔️"; fi
+	@if [ ! $(NEW_OBJS) != 0 ]; then echo "$(BLUE)Generating $(YELLOW)$(NAME) $(BLUE)objects :"; fi
+	$(eval NEW_OBJS=$(shell echo $$(($(NEW_OBJS)+1))))
 				@c++ $(FLAGS) -c $< -I$(HEADS_DIR) -o $@
-				@echo "$(GREEN)Generating $(CYAN)$@ $(CLR_RMV) ✔️";
+				@echo "$(CLR_RMV)- $(CYAN)$@";
 
 ################################################################################
 #                                   RULES                                      #
@@ -55,14 +58,11 @@ RM		    :=		rm -rf
 
 all = $(NAME)
 
-${NAME}:	makedir_p ${OBJS}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
+${NAME}:	${OBJS}
+			@echo "$(BLUE)Generated $(NEW_OBJS) objects successfully ! ✔️"
+			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}binary ..."
 			@${CC} $(FLAGS) -o $(NAME) $(OBJS)
 			@echo "$(YELLOW)$(NAME) $(GREEN)binary created[0m ✔️"
-
-makedir_p:
-	@if [ ! -e "$(OBJS_DIR)" ]; then mkdir -p $(OBJS_DIR); echo "$(GREEN)Creation ${CLR_RMV}of ${CYAN}objects ${CLR_RMV}directory ✔️"; else echo "${YELLOW}objects ${CLR_RMV}directory already exists ✔️"; fi
-	@echo "$(GREEN)Creation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}objects..."
 
 clean:
 	@if [ ! -e "$(OBJS_DIR)" ]; then echo "$(YELLOW)$(NAME) $(CLR_RMV)objects folder already $(RED)deleted $(CLR_RMV)! ✔️" ; else echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objects folder ✔️"; fi
