@@ -36,4 +36,6 @@ class ScavTrap : public ClapTrap
 		unsigned int		ad;
 };
 
+std::ostream & operator<<(std::ostream & o, ScavTrap & F);
+
 #endif

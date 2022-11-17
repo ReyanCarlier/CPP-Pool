@@ -5,7 +5,7 @@
 	// Default
 	ClapTrap::ClapTrap(void)
 	{
-		this->name = "default";
+		this->name = "defaultClapTrapName";
 		this->lp = 10;
 		this->ep = 10;
 		this->ad = 0;
@@ -29,12 +29,9 @@
 	// Copy
 	ClapTrap::ClapTrap(const ClapTrap &CT)
 	{
-		this->name = CT.name;
-		this->lp = CT.lp;
-		this->ep = CT.ep;
-		this->ad = CT.ad;
-
 		std::cout << "Copy of " << this->name << " ClapTrap." << std::endl;
+		(*this) = CT;
+
 		return ;
 	}
 
@@ -47,12 +44,12 @@
 
 	ClapTrap&	ClapTrap::operator=(ClapTrap const &CT)
 	{
+		std::cout << "Operator = constructor of ClapTrap " << CT.name << " called." << std::endl;
 		this->name = CT.name;
 		this->ad = CT.ad;
 		this->ep = CT.ep;
 		this->lp = CT.lp;
 
-		std::cout << "Operator = constructor of ClapTrap " << CT.name << " called." << std::endl;
 		return (*this);
 	}
 
@@ -111,3 +108,56 @@
 		this->lp += amount;
 		std::cout << this->name << " repairs " << amount << "lp: "<< this->lp << "lp remaining." << std::endl;
 	}
+
+// GETTERS
+	const std::string &ClapTrap::getName(void)
+	{
+		return (this->name);
+	}
+
+	unsigned int ClapTrap::getLP(void)
+	{
+		return (this->lp);
+	}
+
+	unsigned int ClapTrap::getEP(void)
+	{
+		return (this->ep);
+	}
+
+	unsigned int ClapTrap::getAD(void)
+	{
+		return (this->ad);
+	}
+// SETTERS
+	void	ClapTrap::setName(const std::string &_name)
+	{
+		this->name = _name;
+	}
+
+	void	ClapTrap::setLP(unsigned int _lp)
+	{
+		this->lp = _lp;
+	}
+
+	void	ClapTrap::setEP(unsigned int _ep)
+	{
+		this->ep = _ep;
+	}
+
+	void	ClapTrap::setAD(unsigned int _ad)
+	{
+		this->ad = _ad;
+	}
+
+std::ostream & operator<<(std::ostream & o, ClapTrap & F)
+{
+	o << "------------------------------" << std::endl;
+	o << "Name          : " << std::setw(10) << F.getName() << std::endl;
+	o << "Life Points   : " << std::setw(10) << F.getLP() << std::endl;
+	o << "Attack Damage : " << std::setw(10) << F.getAD() << std::endl;
+	o << "Energy Points : " << std::setw(10) << F.getEP() << std::endl;
+	o << "------------------------------" << std::endl;
+
+	return o;
+}

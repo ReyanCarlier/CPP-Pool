@@ -27,5 +27,6 @@ int	main(void)
 	CT2.beRepaired(10);
 	CT2.attack("Patrick");
 	CT2.takeDamage(10);
+	std::cout << CT2;
 	return (0);
 }

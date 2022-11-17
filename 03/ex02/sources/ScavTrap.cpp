@@ -5,7 +5,7 @@
 	// Default
 	ScavTrap::ScavTrap(void)
 	{
-		this->name = "default";
+		this->name = "defaultScavTrapName";
 		this->lp = 100;
 		this->ep = 50;
 		this->ad = 20;
@@ -28,10 +28,7 @@
 	// Copy
 	ScavTrap::ScavTrap(const ScavTrap &ST) : ClapTrap::ClapTrap(ST)
 	{
-		this->name = ST.name;
-		this->lp = ST.lp;
-		this->ep = ST.ep;
-		this->ad = ST.ad;
+		(*this) = ST;
 
 		std::cout << "Copy of " << this->name << " ScavTrap." << std::endl;
 		return ;
@@ -80,3 +77,56 @@
 	
 		return ;
 	}
+
+// GETTERS
+	const std::string &ScavTrap::getName(void)
+	{
+		return (this->name);
+	}
+
+	unsigned int ScavTrap::getLP(void)
+	{
+		return (this->lp);
+	}
+
+	unsigned int ScavTrap::getEP(void)
+	{
+		return (this->ep);
+	}
+
+	unsigned int ScavTrap::getAD(void)
+	{
+		return (this->ad);
+	}
+// SETTERS
+	void	ScavTrap::setName(const std::string &_name)
+	{
+		this->name = _name;
+	}
+
+	void	ScavTrap::setLP(unsigned int _lp)
+	{
+		this->lp = _lp;
+	}
+
+	void	ScavTrap::setEP(unsigned int _ep)
+	{
+		this->ep = _ep;
+	}
+
+	void	ScavTrap::setAD(unsigned int _ad)
+	{
+		this->ad = _ad;
+	}
+
+std::ostream & operator<<(std::ostream & o, ScavTrap & F)
+{
+	o << "------------------------------" << std::endl;
+	o << "Name          : " << std::setw(10) << F.getName() << std::endl;
+	o << "Life Points   : " << std::setw(10) << F.getLP() << std::endl;
+	o << "Attack Damage : " << std::setw(10) << F.getAD() << std::endl;
+	o << "Energy Points : " << std::setw(10) << F.getEP() << std::endl;
+	o << "------------------------------" << std::endl;
+
+	return o;
+}

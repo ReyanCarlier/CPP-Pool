@@ -5,7 +5,7 @@
 	// Default
 	FragTrap::FragTrap(void)
 	{
-		this->name = "default";
+		this->name = "defaultFlagTrapName";
 		this->lp = 100;
 		this->ep = 100;
 		this->ad = 30;
@@ -28,10 +28,7 @@
 	// Copy
 	FragTrap::FragTrap(const FragTrap &FT) : ClapTrap::ClapTrap(FT)
 	{
-		this->name = FT.name;
-		this->lp = FT.lp;
-		this->ep = FT.ep;
-		this->ad = FT.ad;
+		(*this) = FT;
 
 		std::cout << "Copy of " << this->name << " FragTrap." << std::endl;
 		return ;
@@ -40,9 +37,9 @@
 	FragTrap&	FragTrap::operator=(FragTrap const &FT)
 	{
 		this->name = FT.name;
-		this->ad = FT.ad;
-		this->ep = FT.ep;
 		this->lp = FT.lp;
+		this->ep = FT.ep;
+		this->ad = FT.ad;
 
 		std::cout << "Operator = constructor of FragTrap " << FT.name << " called." << std::endl;
 		return (*this);
@@ -81,3 +78,56 @@
 	
 		return ;
 	}
+
+// GETTERS
+	const std::string &FragTrap::getName(void)
+	{
+		return (this->name);
+	}
+
+	unsigned int FragTrap::getLP(void)
+	{
+		return (this->lp);
+	}
+
+	unsigned int FragTrap::getEP(void)
+	{
+		return (this->ep);
+	}
+
+	unsigned int FragTrap::getAD(void)
+	{
+		return (this->ad);
+	}
+// SETTERS
+	void	FragTrap::setName(const std::string &_name)
+	{
+		this->name = _name;
+	}
+
+	void	FragTrap::setLP(unsigned int _lp)
+	{
+		this->lp = _lp;
+	}
+
+	void	FragTrap::setEP(unsigned int _ep)
+	{
+		this->ep = _ep;
+	}
+
+	void	FragTrap::setAD(unsigned int _ad)
+	{
+		this->ad = _ad;
+	}
+
+std::ostream & operator<<(std::ostream & o, FragTrap & F)
+{
+	o << "------------------------------" << std::endl;
+	o << "Name          : " << std::setw(10) << F.getName() << std::endl;
+	o << "Life Points   : " << std::setw(10) << F.getLP() << std::endl;
+	o << "Attack Damage : " << std::setw(10) << F.getAD() << std::endl;
+	o << "Energy Points : " << std::setw(10) << F.getEP() << std::endl;
+	o << "------------------------------" << std::endl;
+
+	return o;
+}

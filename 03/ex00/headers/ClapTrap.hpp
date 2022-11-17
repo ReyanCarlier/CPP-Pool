@@ -11,6 +11,11 @@
 #  include <string>
 # endif
 
+# ifndef IOMANIP_HPP
+#  define IOMANIP_HPP
+#  include <iomanip>
+# endif
+
 class ClapTrap {
 	public:
 		ClapTrap(void);
@@ -40,6 +45,9 @@ class ClapTrap {
 		unsigned int		lp;
 		unsigned int		ep;
 		unsigned int		ad;
+
 };
+
+std::ostream & operator<<(std::ostream & o, ClapTrap & F);
 
 #endif

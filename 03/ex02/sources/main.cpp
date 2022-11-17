@@ -6,9 +6,14 @@ int	main(void)
 {
 	ScavTrap ST = ScavTrap("[SCAV]");
 	ScavTrap ST_copy(ST);
+	ST_copy.setName("[SCAV] mais copie");
+	std::cout << ST;
+	std::cout << ST_copy;
 
 	ClapTrap CT = ClapTrap("[CLAP]");
 	ClapTrap CT_copy = CT;
+
+	CT_copy.setName("[CLAP] mais copie");
 
 	FragTrap FT = FragTrap("[FRAG]");
 	FragTrap FT_copy = FT;

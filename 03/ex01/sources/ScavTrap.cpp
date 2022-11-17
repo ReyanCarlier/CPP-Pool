@@ -117,3 +117,15 @@
 	
 		return ;
 	}
+
+std::ostream & operator<<(std::ostream & o, ScavTrap & F)
+{
+	o << "------------------------------" << std::endl;
+	o << "Name          : " << std::setw(10) << F.getName() << std::endl;
+	o << "Life Points   : " << std::setw(10) << F.getLP() << std::endl;
+	o << "Attack Damage : " << std::setw(10) << F.getAD() << std::endl;
+	o << "Energy Points : " << std::setw(10) << F.getEP() << std::endl;
+	o << "------------------------------" << std::endl;
+
+	return o;
+}
