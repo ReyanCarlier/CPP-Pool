@@ -11,7 +11,7 @@ int	main(void)
 	CT.attack("Patrick");
 	CT.attack("Patrick");
 	CT.attack("Patrick");
-	
+
 	CT.attack("Patrick");
 	CT.attack("Patrick");
 	CT.attack("Patrick");
