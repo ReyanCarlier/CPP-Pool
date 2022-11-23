@@ -2,31 +2,36 @@
 
 int	main(void)
 {
-	ClapTrap CT = ClapTrap("Bob");
-	ClapTrap CT2 = ClapTrap("Bob2");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	CT.attack("Patrick");
-	std::cout << "------ Patrick ne doit plus pouvoir agir ------" << std::endl;
-	CT.attack("Patrick");
-	CT.beRepaired(10);
+	ClapTrap Bob = ClapTrap("Bob");
+	ClapTrap Patrick = ClapTrap("Patrick");
+	std::cout << Bob;
+	std::cout << Patrick;
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.setAD(1);
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	Bob.attack("Patrick");
+	std::cout << Bob;
+	std::cout << "------ Bob ne doit plus pouvoir agir ------" << std::endl;
+	Bob.attack("Patrick");
+	Bob.beRepaired(10);
 
-	CT2.takeDamage(9);
-	CT2.beRepaired(2);
-	CT2.attack("Patrick");
-	CT2.beRepaired(3);
-	CT2.takeDamage(6);
+	std::cout << std::endl;
+	Patrick.takeDamage(9);
+	Patrick.beRepaired(2);
+	Patrick.attack("Patrick");
+	Patrick.beRepaired(3);
+	Patrick.takeDamage(6);
 	std::cout << "------ Patrick ne doit plus pouvoir agir ------" << std::endl;
-	CT2.beRepaired(10);
-	CT2.attack("Patrick");
-	CT2.takeDamage(10);
-	std::cout << CT2;
+	Patrick.beRepaired(10);
+	Patrick.attack("Patrick");
+	Patrick.takeDamage(10);
+	std::cout << Patrick;
 	return (0);
 }

@@ -18,7 +18,6 @@
 
 class ClapTrap {
 	public:
-		ClapTrap(void);
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap &);
 		~ClapTrap(void);
@@ -41,10 +40,10 @@ class ClapTrap {
 		void				setAD(unsigned int);
 
 	private:
-		std::string			name;
-		unsigned int		lp;
-		unsigned int		ep;
-		unsigned int		ad;
+		std::string			_name;
+		unsigned int		_lp;
+		unsigned int		_ep;
+		unsigned int		_ad;
 };
 
 std::ostream & operator<<(std::ostream & o, ClapTrap & F);
