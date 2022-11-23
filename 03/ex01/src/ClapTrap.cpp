@@ -5,93 +5,94 @@
 	// Default
 	ClapTrap::ClapTrap(void)
 	{
-		this->name = "default";
-		this->lp = 10;
-		this->ep = 10;
-		this->ad = 0;
+		this->_name = "default";
+		this->_lp = 10;
+		this->_ep = 10;
+		this->_ad = 0;
 
-		std::cout << "Default construction of " << this->name << " ClapTrap." << std::endl;
+		std::cout << "Default construction of " << this->getName() << " ClapTrap." << std::endl;
 		return ;
 	};
 
 	// Name
-	ClapTrap::ClapTrap(const std::string& _name)
+	ClapTrap::ClapTrap(const std::string& name)
 	{
-		this->name = _name;
-		this->lp = 10;
-		this->ep = 10;
-		this->ad = 0;
+		this->_name = name;
+		this->_lp = 10;
+		this->_ep = 10;
+		this->_ad = 0;
 
-		std::cout << "Construction of " << this->name << " ClapTrap." << std::endl;
+		std::cout << "Construction of " << this->getName() << " ClapTrap." << std::endl;
 		return ;
-	}
-
-	ClapTrap&	ClapTrap::operator=(ClapTrap const &CT)
-	{
-		this->name = CT.name;
-		this->ad = CT.ad;
-		this->ep = CT.ep;
-		this->lp = CT.lp;
-
-		std::cout << "Operator = constructor of ClapTrap " << CT.name << " called." << std::endl;
-		return *this;
 	}
 
 	// Copy
 	ClapTrap::ClapTrap(const ClapTrap &CT)
 	{
+		std::cout << "Copy of " << this->getName() << " ClapTrap." << std::endl;
 		(*this) = CT;
-
-		std::cout << "Copy of " << this->name << " ClapTrap." << std::endl;
 		return ;
+	}
+
+	ClapTrap&	ClapTrap::operator=(ClapTrap const &CT)
+	{
+		std::cout << "Operator = constructor of ClapTrap " << CT._name << " called." << std::endl;
+		if (this == &CT)
+			return (*this);
+		this->_name = CT._name;
+		this->_ad = CT._ad;
+		this->_ep = CT._ep;
+		this->_lp = CT._lp;
+		
+		return (*this);
 	}
 
 	// Destructeur
 	ClapTrap::~ClapTrap(void)
 	{
-		std::cout << "Destruction of " << this->name << " ClapTrap." << std::endl;
+		std::cout << "Destruction of " << this->getName() << " ClapTrap." << std::endl;
 		return ;
 	}
 
 // GETTERS
 	const std::string &ClapTrap::getName(void)
 	{
-		return (this->name);
+		return (this->_name);
 	}
 
 	unsigned int ClapTrap::getLP(void)
 	{
-		return (this->lp);
+		return (this->_lp);
 	}
 
 	unsigned int ClapTrap::getEP(void)
 	{
-		return (this->ep);
+		return (this->_ep);
 	}
 
 	unsigned int ClapTrap::getAD(void)
 	{
-		return (this->ad);
+		return (this->_ad);
 	}
 // SETTERS
-	void	ClapTrap::setName(const std::string &_name)
+	void	ClapTrap::setName(const std::string &name)
 	{
-		this->name = _name;
+		this->_name = name;
 	}
 
-	void	ClapTrap::setLP(unsigned int _lp)
+	void	ClapTrap::setLP(unsigned int lp)
 	{
-		this->lp = _lp;
+		this->_lp = lp;
 	}
 
-	void	ClapTrap::setEP(unsigned int _ep)
+	void	ClapTrap::setEP(unsigned int ep)
 	{
-		this->ep = _ep;
+		this->_ep = ep;
 	}
 
-	void	ClapTrap::setAD(unsigned int _ad)
+	void	ClapTrap::setAD(unsigned int ad)
 	{
-		this->ad = _ad;
+		this->_ad = ad;
 	}
 
 // FONCTIONS MEMBRES
@@ -99,18 +100,18 @@
 	// Attack
 	void	ClapTrap::attack(const std::string& target)
 	{
-		if (this->lp == 0)
+		if (this->getLP() == 0)
 		{
-			std::cout << this->name << " has no remaining lp: dead." << std::endl;
+			std::cout << this->getName() << " ClapTrap has no remaining lp: dead." << std::endl;
 			return ;
 		}
-		if (this->ep == 0)
+		if (this->getEP() == 0)
 		{
-			std::cout << this->name << " runs out of energy: Can't attack !" << std::endl;
+			std::cout << this->getName() << " ClapTrap runs out of energy: Can't attack !" << std::endl;
 			return ;
 		}
-		this->ep -= 1;
-		std::cout << this->name << " attacks " << target << ", causing " << this->ad << " damage point(s)." << std::endl;
+		this->setEP(this->getEP() - 1);
+		std::cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getAD() << " damage point(s)." << std::endl;
 	
 		return ;
 	}
@@ -118,16 +119,16 @@
 	// Take Damage
 	void	ClapTrap::takeDamage(unsigned int amount)
 	{
-		if (this->lp == 0)
+		if (this->getLP() == 0)
 		{
-			std::cout << this->name << " has no remaining lp, don't beat a man while he's on the ground." << std::endl;
+			std::cout << this->getName() << " has no remaining lp, don't beat a man while he's on the ground." << std::endl;
 			return ;
 		}
-		if (amount > this->lp)
-			this->lp = 0;
+		if (amount > this->getLP())
+			this->setLP(0);
 		else
-			this->lp -= amount;
-		std::cout << this->name << " received " << amount << " damage point(s): " << this->lp << "lp remaining." << std::endl;
+			this->setLP(this->getLP() - amount);
+		std::cout << this->getName() << " received " << amount << " damage point(s): " << this->getLP() << "lp remaining." << std::endl;
 
 		return ;
 	}
@@ -135,19 +136,19 @@
 	// Repair
 	void	ClapTrap::beRepaired(unsigned int amount)
 	{
-		if (this->lp == 0)
+		if (this->getLP() == 0)
 		{
-			std::cout << this->name << " has no remaining lp: dead." << std::endl;
+			std::cout << this->getName() << " has no remaining lp: dead." << std::endl;
 			return ;
 		}
-		if (this->ep == 0)
+		if (this->getEP() == 0)
 		{
-			std::cout << this->name << " runs out of energy: Can't repair !" << std::endl;
+			std::cout << this->getName() << " runs out of energy: Can't repair !" << std::endl;
 			return ;
 		}
-		this->ep -= 1;
-		this->lp += amount;
-		std::cout << this->name << " repairs " << amount << "lp: "<< this->lp << "lp remaining." << std::endl;
+		this->setEP(this->getEP() - 1);
+		this->setLP(this->getLP() + amount);
+		std::cout << this->getName() << " repairs " << amount << "lp: "<< this->getLP() << "lp remaining." << std::endl;
 	}
 
 std::ostream & operator<<(std::ostream & o, ClapTrap & F)

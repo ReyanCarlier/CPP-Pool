@@ -8,7 +8,6 @@
 class ScavTrap : public ClapTrap
 {
 	public:
-		ScavTrap(void);
 		ScavTrap(const std::string& name);
 		ScavTrap(const ScavTrap &);
 		~ScavTrap(void);

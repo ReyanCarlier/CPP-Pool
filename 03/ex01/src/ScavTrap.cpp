@@ -2,17 +2,6 @@
 
 // DE.CONSTRUCTEURS
 
-	// Default
-	ScavTrap::ScavTrap(void)
-	{
-		this->name = "default";
-		this->lp = 100;
-		this->ep = 50;
-		this->ad = 20;
-	
-		std::cout << "Default ScavTrap constructor called." << std::endl;
-	}
-
 	// Name
 	ScavTrap::ScavTrap(const std::string & _name)
 	{
