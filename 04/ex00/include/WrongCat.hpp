@@ -9,7 +9,6 @@ class WrongCat : public WrongAnimal
 		WrongCat& operator=(const WrongCat& rhs);
 		~WrongCat();
 
-		void makeSound() const;
 	private:
 		std::string _type;
 };

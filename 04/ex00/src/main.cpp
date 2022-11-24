@@ -5,10 +5,10 @@
 int main()
 {
 	const Animal* meta = new Animal();
-	const Animal* i = new Cat("Siamese");
-	const Animal* j = new Dog("Golden Retriever");
-	const WrongAnimal* k = new WrongCat();
-	const WrongCat* l = new WrongCat("Black Tabby");
+	const Animal* i = new Cat();
+	const Animal* j = new Dog();
+	const WrongAnimal* k = new WrongAnimal();
+	const WrongCat* l = new WrongCat();
 
 	std::cout << std::endl << i->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;

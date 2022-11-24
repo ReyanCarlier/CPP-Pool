@@ -2,11 +2,11 @@
 #                                    CONFIG                                    #
 ################################################################################
 
-CC = c++
+CXX = c++
 
-NAME = animalerie
+TARGET = animalerie
 
-FLAGS = -Wall -Werror -Wextra -std=c++98 -Wshadow -Wno-shadow
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Wshadow
 
 ################################################################################
 #                                   SOURCES                                    #
@@ -20,7 +20,7 @@ SRCS_FILES	:=		main \
 
 SRCS_FILES	:= 		$(addsuffix .cpp, $(SRCS_FILES))
 
-SRCS_DIR	= 		sources/
+SRCS_DIR	= 		src/
 
 VPATH		= 		$(SRCS_DIR)
 
@@ -28,24 +28,35 @@ VPATH		= 		$(SRCS_DIR)
 #                                  HEADERS                                     #
 ################################################################################
 
-HEADS_DIR 	= 		headers/
+HEADS_DIR 	= 		include/
+
+HEADS_DIRN 	= 		include
 
 ################################################################################
 #                                  OBJECTS                                     #
 ################################################################################
 
+OBJS_DIR	= 		obj/
+
+OBJS_DIRN	= 		obj/
+
 OBJS		=		$(patsubst %.cpp,$(OBJS_DIR)%.o,${SRCS_FILES})
 
-OBJS_DIR	= 		objects/
+OBJS_DUP	=		$(patsubst %.cpp,%.o,${SRCS_FILES})
 
 NEW_OBJS	=		0
 
-$(OBJS_DIR)%.o	: %.cpp
-	@if [ ! -e "$(OBJS_DIR)" ]; then mkdir -p $(OBJS_DIR); echo "$(GREEN)Creation ${CLR_RMV}of ${CYAN}objects ${CLR_RMV}directory ✔️"; fi
-	@if [ ! $(NEW_OBJS) != 0 ]; then echo "$(BLUE)Generating $(YELLOW)$(NAME) $(BLUE)objects :"; fi
-	$(eval NEW_OBJS=$(shell echo $$(($(NEW_OBJS)+1))))
-				@c++ $(FLAGS) -c $< -I$(HEADS_DIR) -o $@
-				@echo "$(CLR_RMV)- $(CYAN)$@";
+################################################################################
+#                                  DEPS                                     #
+################################################################################
+
+DEPS_DIR 	= 		deps/
+
+DEPS_DIRN	=		deps/
+
+DEPS		=		$(patsubst %.o,${DEPS_DIR}%.d,${OBJS_DUP})
+
+NEW_DEPS	=		0
 
 ################################################################################
 #                                   RULES                                      #
@@ -59,22 +70,72 @@ BLUE		:=		\033[1;34m
 CYAN 		:=		\033[1;36m
 RM		    :=		rm -rf
 
-all = $(NAME)
+all: $(TARGET)
 
-${NAME}:	${OBJS}
+${TARGET}:	${DEPS} | ${OBJS}
 			@echo "$(BLUE)Generated $(NEW_OBJS) objects successfully ! ✔️"
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}binary ..."
-			@${CC} $(FLAGS) -o $(NAME) $(OBJS)
-			@echo "$(YELLOW)$(NAME) $(GREEN)binary created[0m ✔️"
+			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(TARGET) ${CLR_RMV}binary ..."
+			@ $(CXX) $(CXXFLAGS) -I$(HEADS_DIR) $(OBJS) -o $(TARGET)
+			@echo "$(YELLOW)$(TARGET) $(GREEN)binary created[0m ✔️"
+
+$(OBJS_DIR)%.o: %.cpp | makedir_objs
+	@if [ ! $(NEW_OBJS) != 0 ]; then echo "$(BLUE)Generating $(YELLOW)$(TARGET) $(BLUE)objects :"; else : ; fi
+	$(eval NEW_OBJS=$(shell echo $$(($(NEW_OBJS)+1))))
+				@ echo "$(CLR_RMV)- $(CYAN)$@";
+				@ $(CXX) $(CXXFLAGS) -I$(HEADS_DIR) -c $< -o $@
+
+TMP_FILE =
+
+BLOCK_DEPS = 0
+
+${DEPS_DIR}%.d : %.cpp | makedir_deps
+	@ if [ ! $(NEW_DEPS) != 1 ]; then \
+		if [ ! $(BLOCK_DEPS) != 1 ]; then \
+			echo "$(BLUE)Generating $(YELLOW)$(TARGET) $(BLUE)dependencies :"; \
+		fi \
+	fi
+	$(eval NEW_DEPS=$(shell echo $$(($(NEW_DEPS)+1))))
+	@ if [ ! $(BLOCK_DEPS) != 0 ]; then echo "$(CLR_RMV)- $(CYAN)$@"; fi
+	@ if [ ! $(BLOCK_DEPS) != 0 ]; then echo -n "$@ " > $@.tmp; fi
+	$(eval TMP_FILE=$(shell echo $@ | sed "s/$(DEPS_DIR)$(OBJS_DIR)"g))
+	$(eval TMP_FILE=$(shell echo $(TMP_FILE) | sed "s/.d/.o/g"))
+				@ if [ ! $(BLOCK_DEPS) != 0 ]; then $(CXX) -I$(HEADS_DIR) $(CXXFLAGS) -MM -MP -MT $(TMP_FILE) $< >> $@.tmp; fi
+				@ if [ ! $(BLOCK_DEPS) != 0 ]; then mv $@.tmp $@; fi
+
+makedir_objs:
+	@ if [ ! -e "$(OBJS_DIRN)" ]; then \
+		if [ ! $(BLOCK_DEPS) != 0 ]; then \
+			mkdir -p $(OBJS_DIRN); \
+			echo "$(GREEN)Creation ${CLR_RMV}of ${CYAN}objects ${CLR_RMV}directory ✔️"; \
+		fi \
+	fi
+
+makedir_deps:
+	@ if [ ! -e "$(DEPS_DIRN)" ]; then \
+		if [ ! $(BLOCK_DEPS) != 0 ]; then \
+			mkdir -p $(DEPS_DIRN); \
+			echo "$(GREEN)Creation ${CLR_RMV}of ${CYAN}depends ${CLR_RMV}directory ✔️"; \
+		fi \
+	fi
 
 clean:
-	@if [ ! -e "$(OBJS_DIR)" ]; then echo "$(YELLOW)$(NAME) $(CLR_RMV)objects folder already $(RED)deleted $(CLR_RMV)! ✔️" ; else echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objects folder ✔️"; fi
-			@${RM} $(OBJS_DIR)
+	$(eval BLOCK_DEPS=$(shell echo $$(($(BLOCK_DEPS)+1))))
+	@if [ ! -e "$(OBJS_DIR)" ]; then echo "$(YELLOW)$(TARGET) $(CLR_RMV)objects folder already $(RED)deleted $(CLR_RMV)! ✔️" ; else ${RM} $(OBJS_DIR); echo "$(RED)Deleted $(YELLOW)$(TARGET) $(BLUE)objects $(CLR_RMV)folder ✔️"; fi
+	@if [ ! -e "${DEPS_DIRN}" ]; then echo "$(YELLOW)$(TARGET) $(CLR_RMV)dependencies folder already $(RED)deleted $(CLR_RMV)! ✔️" ; else ${RM} ${DEPS_DIRN}; echo "$(RED)Deleted $(YELLOW)$(TARGET) $(BLUE)dependencies $(CLR_RMV)folder ✔️"; fi
 			
 fclean: 	clean
-	@if [ ! -e "$(NAME)" ]; then echo "$(YELLOW)$(NAME) $(CLR_RMV)binary already $(RED)deleted $(CLR_RMV)! ✔️"; else echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"; fi
-			@ ${RM} ${NAME}
+	@if [ ! -e "$(TARGET)" ]; then echo "$(YELLOW)$(TARGET) $(CLR_RMV)binary already $(RED)deleted $(CLR_RMV)! ✔️"; else ${RM} ${TARGET}; echo "$(RED)Deleted $(YELLOW)$(TARGET) $(CLR_RMV)binary ✔️"; fi
 
-re: 		fclean $(NAME)
+unblock:
+	$(eval BLOCK_DEPS=$(shell echo $$(($(BLOCK_DEPS)-1))))
+
+re: fclean unblock all
 
 .PHONY: clean fclean re all
+
+ifeq (,$(filter clean, $(MAKECMDGOALS)))
+	-include $(DEPS)
+endif
+
+%.o: %.cpp Makefile
+	@ $(CXX) $(CXXFLAGS) -MMD -MP $< -o $@
