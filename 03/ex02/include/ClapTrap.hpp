@@ -20,16 +20,17 @@ class ClapTrap {
 	public:
 		ClapTrap(void);
 		ClapTrap(const std::string& name);
+		ClapTrap(const std::string& name, unsigned int lp, unsigned int ep, unsigned int ad);
 		ClapTrap(const ClapTrap &);
 		~ClapTrap(void);
 		ClapTrap& operator=(ClapTrap const & CT); // Affectation
 
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void				attack(const std::string& target);
+		void				takeDamage(unsigned int amount);
+		void				beRepaired(unsigned int amount);
 
-	// Getters
-		const std::string	&getName(void);
+		// Getters
+		const std::string	&getName(void) const;
 		unsigned int		getLP(void);
 		unsigned int		getEP(void);
 		unsigned int		getAD(void);
@@ -41,10 +42,10 @@ class ClapTrap {
 		void				setAD(unsigned int);
 
 	private:
-		std::string		name;
-		unsigned int	lp;
-		unsigned int	ep;
-		unsigned int	ad;
+		std::string			_name;
+		unsigned int		_lp;
+		unsigned int		_ep;
+		unsigned int		_ad;
 };
 
 std::ostream & operator<<(std::ostream & o, ClapTrap & F);

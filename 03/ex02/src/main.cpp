@@ -17,6 +17,7 @@ int	main(void)
 
 	FragTrap FT = FragTrap("[FRAG]");
 	FragTrap FT_copy = FT;
+	FT_copy.setName("[FRAG] mais copie");
 
 	ST.guardGate();
 	ST.attack("a target");

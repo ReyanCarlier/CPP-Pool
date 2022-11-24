@@ -15,23 +15,22 @@
 	};
 
 	// Name
-	ClapTrap::ClapTrap(const std::string& name)
+	ClapTrap::ClapTrap(const std::string& name) : _name(name), _lp(10), _ep(10), _ad(0)
 	{
-		this->_name = name;
-		this->_lp = 10;
-		this->_ep = 10;
-		this->_ad = 0;
-
 		std::cout << "Construction of " << this->getName() << " ClapTrap." << std::endl;
 		return ;
+	}
+
+	ClapTrap::ClapTrap(const std::string& name, unsigned int lp, unsigned int ep, unsigned int ad) : _name(name), _lp(lp), _ep(ep), _ad(ad)
+	{
+		std::cout << "Construction of " << this->getName() << " ClapTrap." << std::endl;
 	}
 
 	// Copy
 	ClapTrap::ClapTrap(const ClapTrap &CT)
 	{
-		std::cout << "Copy of " << this->getName() << " ClapTrap." << std::endl;
+		std::cout << "Copy of " << CT.getName() << " ClapTrap." << std::endl;
 		(*this) = CT;
-		return ;
 	}
 
 	ClapTrap&	ClapTrap::operator=(ClapTrap const &CT)
@@ -51,49 +50,25 @@
 	ClapTrap::~ClapTrap(void)
 	{
 		std::cout << "Destruction of " << this->getName() << " ClapTrap." << std::endl;
-		return ;
 	}
 
 // GETTERS
-	const std::string &ClapTrap::getName(void)
-	{
-		return (this->_name);
-	}
+	const std::string &ClapTrap::getName(void) const { return (this->_name); }
 
-	unsigned int ClapTrap::getLP(void)
-	{
-		return (this->_lp);
-	}
+	unsigned int ClapTrap::getLP(void) { return (this->_lp); }
 
-	unsigned int ClapTrap::getEP(void)
-	{
-		return (this->_ep);
-	}
+	unsigned int ClapTrap::getEP(void) { return (this->_ep); }
 
-	unsigned int ClapTrap::getAD(void)
-	{
-		return (this->_ad);
-	}
+	unsigned int ClapTrap::getAD(void) { return (this->_ad); }
+
 // SETTERS
-	void	ClapTrap::setName(const std::string &name)
-	{
-		this->_name = name;
-	}
+	void	ClapTrap::setName(const std::string &name) { this->_name = name; }
 
-	void	ClapTrap::setLP(unsigned int lp)
-	{
-		this->_lp = lp;
-	}
+	void	ClapTrap::setLP(unsigned int lp) { this->_lp = lp; }
 
-	void	ClapTrap::setEP(unsigned int ep)
-	{
-		this->_ep = ep;
-	}
+	void	ClapTrap::setEP(unsigned int ep) { this->_ep = ep; }
 
-	void	ClapTrap::setAD(unsigned int ad)
-	{
-		this->_ad = ad;
-	}
+	void	ClapTrap::setAD(unsigned int ad) { this->_ad = ad; }
 
 // FONCTIONS MEMBRES
 

@@ -130,7 +130,9 @@ re: fclean unblock all
 
 .PHONY: clean fclean re all
 
--include $(DEPS)
+ifeq (,$(filter clean, $(MAKECMDGOALS)))
+	-include $(DEPS)
+endif
 
 %.o: %.cpp Makefile
 	@ $(CXX) $(CXXFLAGS) -MMD -MP $< -o $@

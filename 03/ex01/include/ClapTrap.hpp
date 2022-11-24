@@ -20,6 +20,7 @@ class ClapTrap {
 	public:
 		ClapTrap(void);
 		ClapTrap(const std::string& name);
+		ClapTrap(const std::string& name, unsigned int lp, unsigned int ep, unsigned int ad);
 		ClapTrap(const ClapTrap &);
 		~ClapTrap(void);
 		ClapTrap& operator=(ClapTrap const & CT); // Affectation
@@ -29,7 +30,7 @@ class ClapTrap {
 		void				beRepaired(unsigned int amount);
 
 		// Getters
-		const std::string	&getName(void);
+		const std::string	&getName(void) const;
 		unsigned int		getLP(void);
 		unsigned int		getEP(void);
 		unsigned int		getAD(void);
