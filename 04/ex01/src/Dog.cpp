@@ -1,9 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog")
-{
-	std::cout << "Dog default constructor called" << std::endl;
-}
+Dog::Dog(void) : Animal("Dog") { std::cout << "Dog default constructor called" << std::endl; }
 
 Dog::~Dog(void) { std::cout << "Oh no, Dog has been destroyed..." << std::endl; }
 
@@ -21,8 +18,4 @@ Dog&	Dog::operator=(const Dog &D)
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
-{
-	std::cout << "\"Bark Bark\" - Sno'op Doggo, the snack eater." << std::endl;
-	return ;
-}
+void	Dog::makeSound(void) const { std::cout << "\"Bark Bark\" - Sno'op Doggo, the snack eater." << std::endl; }

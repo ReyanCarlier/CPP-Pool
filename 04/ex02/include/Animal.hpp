@@ -22,10 +22,15 @@ class Animal {
 		virtual ~Animal(void) = 0;
 		Animal&	operator=(Animal const & A);
 		Animal(std::string type);
-		std::string 	getType(void) const;
+
 		virtual void	makeSound(void) const;
+
+		Brain			*getBrain(void);
+		std::string 	getType(void) const;
+
 	protected:
 		std::string type;
+		Brain		*brain;
 };
 
 #endif
