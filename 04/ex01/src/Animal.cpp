@@ -6,7 +6,7 @@ Animal::Animal(void) : type("Animal")
 	this->brain = new Brain();
 }
 
-Animal::Animal(const std::string type) : type(type)
+Animal::Animal(const std::string _type) : type(_type)
 {
 	std::cout << "Animal constructor called" << std::endl;
 	this->brain = new Brain();

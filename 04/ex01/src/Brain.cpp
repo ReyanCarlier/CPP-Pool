@@ -7,7 +7,10 @@
 
 Brain::Brain(void)
 {
-	const std::string ideas[5] = {
+	this->ideasCount = 100;
+	this->ideas = new std::string[this->ideasCount];
+
+	const std::string _ideas[5] = {
 		"idea 1",
 		"idea 2",
 		"idea 3",
@@ -15,35 +18,37 @@ Brain::Brain(void)
 		"idea 5"
 	};
 
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = ideas[rand() % 5];
+	for (int i = 0; i < this->ideasCount; i++)
+		this->ideas[i] = _ideas[rand() % 5];
 	std::cout << "Zoop. This is a brand new brain !" << std::endl;
-	return ;
 }
 
 Brain::~Brain(void)
 {
 	std::cout << "Brain liquefied." << std::endl;
-	return ;
+	delete [] this->ideas;
 }
 
 Brain::Brain(const Brain &B)
 {
-	std::cout << "No personnality. A new same brain." << std::endl;
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = B._ideas[i];
-	return ;
+	std::cout << "Brain copy constructor called." << std::endl;
+	*this = B;
 }
 
 Brain&	Brain::operator=(const Brain &B)
 {
 	std::cout << "Let's do some chemics and duplicate this brain!" << std::endl;
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = B._ideas[i];
+	if (this != &B)
+	{
+		this->ideasCount = B.ideasCount;
+		this->ideas = new std::string[this->ideasCount];
+		for (int i = 0; i < this->ideasCount; i++)
+			this->ideas[i] = B.ideas[i];
+	}
 	return (*this);
 }
 
 std::string&	Brain::getIdea(int i)
 {
-	return (this->_ideas[i]);
+	return (this->ideas[i]);
 }

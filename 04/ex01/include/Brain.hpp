@@ -17,10 +17,12 @@ class Brain {
 		Brain(const Brain &);
 		~Brain(void);
 		Brain&	operator=(Brain const &);
+
 		std::string&	getIdea(int);
 
 	private:
-		std::string _ideas[100];
+		std::string		*ideas;
+		int				ideasCount;
 };
 
 #endif
