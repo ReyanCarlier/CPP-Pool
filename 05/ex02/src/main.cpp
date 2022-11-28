@@ -22,16 +22,16 @@ int main()
 	
 	try
 	{
-		RobotomyRequestForm test("test", "testname");
+		ShrubberyCreationForm test("target");
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Cannot initialize test because " << e.what() << std::endl;
 	}
 
-	RobotomyRequestForm a("targetA", "robotomyform2");
-	RobotomyRequestForm b("targetB", "robotomyform2");
-	RobotomyRequestForm c("targetB", "robotomyform2");
+	ShrubberyCreationForm a("targetA");
+	ShrubberyCreationForm b("targetB");
+	ShrubberyCreationForm c("targetB");
 	std::cout << john << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;

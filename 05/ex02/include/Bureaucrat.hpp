@@ -11,7 +11,14 @@
 #  include <iostream>
 # endif
 
-class Form;
+# ifndef IOMANIP_HPP
+#  define IOMANIP_HPP
+#  include <iomanip>
+# endif
+
+# ifndef FORM_HPP
+#  include "Form.hpp"
+# endif
 
 class Bureaucrat
 {
@@ -22,11 +29,16 @@ class Bureaucrat
 		Bureaucrat(const std::string &name, int grade);
 		~Bureaucrat(void);
 
-		void		signForm(Form &form);
+		// Getters
 		std::string	getName(void) const;
 		int			getGrade(void) const;
+
+		// Members
 		void		incrementGrade(void);
 		void		decrementGrade(void);
+		void		signForm(Form &F);
+		void		executeForm(const Form &F);
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
