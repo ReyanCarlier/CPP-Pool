@@ -20,7 +20,6 @@ Animal&	Animal::operator=(Animal const &F)
 	return (*this);
 }
 
-void	Animal::makeSound(void) const
-{ std::cout << "*This is an animal sound, but which kind ? A platypus ?*" << std::endl; }
+std::string	Animal::getType(void) const { return (this->type); }
 
-std::string		Animal::getType(void) const { return (this->type); }
+void		Animal::makeSound(void) const { std::cout << "*This is an animal sound, but which kind ? A platypus ?*" << std::endl; }
