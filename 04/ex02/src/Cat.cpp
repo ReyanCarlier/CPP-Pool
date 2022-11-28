@@ -4,7 +4,7 @@ Cat::Cat(void) : Animal("Cat") { std::cout << "Cat default constructor called" <
 
 Cat::~Cat(void) { std::cout << "Oh no, Cat has been destroyed..." << std::endl; }
 
-Cat::Cat(const std::string &type) : Animal::Animal(type) { std::cout << "Generating a " << type << " Cat !" << std::endl; }
+Cat::Cat(const std::string &_type) : Animal::Animal(_type) { std::cout << "Generating a " << _type << " Cat !" << std::endl; }
 
 Cat::Cat(const Cat &C) : Animal::Animal(C) { std::cout << "CopyCat !" << std::endl; }
 

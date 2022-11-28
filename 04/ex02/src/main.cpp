@@ -4,9 +4,10 @@
 
 int main()
 {
-	Animal* animals[10];
+	unsigned int	animalCount = 10;
+	Animal*			animals[animalCount];
 
-	for (int i = 0; i < 10; i++)
+	for (unsigned int i = 0; i < animalCount; i++)
 	{
 		if (i >= 5)
 			animals[i] = new Dog();
@@ -15,13 +16,13 @@ int main()
 	}
 	Cat copy(*(Cat *)animals[0]);
 	std::cout << std::endl;
-	for (int i = 0; i < 100; i++)
+	for (unsigned int i = 0; i < animalCount; i++)
 	{
 		std::cout << std::setw(30) << std::left << copy.getBrain()->getIdea(i);
 		std::cout << std::setw(30) << std::left << ((Cat *)animals[0])->getBrain()->getIdea(i) << std::endl;
 	}
 	std::cout << std::endl;
-	for (int i = 0; i < 10; i++)
+	for (unsigned int i = 0; i < animalCount; i++)
 	{
 		delete animals[i];
 	}

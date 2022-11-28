@@ -22,7 +22,7 @@ class Brain {
 
 	private:
 		std::string		*ideas;
-		int				ideasCount;
+		unsigned int	ideasCount;
 };
 
 #endif

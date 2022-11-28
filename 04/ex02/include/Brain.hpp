@@ -25,7 +25,8 @@ class Brain {
 		std::string&	getIdea(int);
 
 	private:
-		std::string _ideas[100];
+		std::string		*ideas;
+		unsigned int	ideasCount;
 };
 
 #endif

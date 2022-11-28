@@ -18,7 +18,7 @@ Brain::Brain(void)
 		"idea 5"
 	};
 
-	for (int i = 0; i < this->ideasCount; i++)
+	for (unsigned int i = 0; i < this->ideasCount; i++)
 		this->ideas[i] = _ideas[rand() % 5];
 	std::cout << "Zoop. This is a brand new brain !" << std::endl;
 }
@@ -42,7 +42,7 @@ Brain&	Brain::operator=(const Brain &B)
 	{
 		this->ideasCount = B.ideasCount;
 		this->ideas = new std::string[this->ideasCount];
-		for (int i = 0; i < this->ideasCount; i++)
+		for (unsigned int i = 0; i < this->ideasCount; i++)
 			this->ideas[i] = B.ideas[i];
 	}
 	return (*this);
