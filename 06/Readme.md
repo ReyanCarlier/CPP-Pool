@@ -154,3 +154,20 @@ Par exemple, lors de la réception de données d'un réseau nous recevons un flu
 
 CONST CAST
 ===========
+
+Le const cast permet d'effectuer des conversions de type constants.
+
+Exemple :
+---------
+
+```C++
+int	main(void) {
+	int			a = 42; // Valeur de référence
+
+	const int *	b = &a; // Promotion implicite -> OK
+	int	*		c = b; // Démotion implicite -> NON
+	int *		d = const_cast<int *>(b); // Démotion explicite -> OK
+
+	return (0);
+}
+```
