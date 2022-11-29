@@ -165,7 +165,7 @@ int	main(void) {
 	int			a = 42; // Valeur de référence
 
 	const int *	b = &a; // Promotion implicite -> OK
-	int	*		c = b; // Démotion implicite -> NON
+	int *		c = b; // Démotion implicite -> NON
 	int *		d = const_cast<int *>(b); // Démotion explicite -> OK
 
 	return (0);
