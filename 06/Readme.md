@@ -152,3 +152,5 @@ Le reinterpret cast ne fait **aucune vérification** sémantique à la compilati
 L'intérêt du reinterpret cast réside dans la réinterpretation de données.
 Par exemple, lors de la réception de données d'un réseau nous recevons un flux d'octets quelconque que l'on va stocker sur un void*, ou un buffer de mémoire non typé/brut. Le protocole du réseau nous indiquera que la donnée reçue est en réalité une suite de char, on pourra alors effectuer un reinterpret cast sur cette suite d'octets sous la forme d'un char* afin de la manipuler correctement.
 
+CONST CAST
+===========
