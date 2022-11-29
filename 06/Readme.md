@@ -1,16 +1,10 @@
-**5 actions de cast disponibles :**
-
-- Les conversions
-- Les réinterprétations
-- Les changements de type qualifier
-- Les downcasts
-- Les upcasts
-
 **Taille des types :**
+======================
 - char : 1 octet
 - int : 4 octets
 - long : 4 octets
 - double : 8 octets
+
 
 **Définitions :**
 =================
@@ -31,7 +25,8 @@ La promotion consiste à la conversion d'une variable d'un type plus petit vers 
 Le static cast permet de faire un certain nombre de conversions simples, mais également de pouvoir naviguer dans l'arbre d'héritage.
 La conversion est effectuée même dans le cas d'une démotion.
 
-En pratique, le static cast s'écrit de la manière suivante :
+Utilisation :
+-------------
 
 ```C++
 int	main(void)
@@ -91,6 +86,7 @@ Dans le cas d'une démotion explicite par pointeur, le dynamic cast nous renverr
 A l'inverse, dans le cas d'utilisation par référence, *une référence ne pouvant être null*, il faut procéder à un try&catch.
 
 Utilisation :
+-------------
 
 ```C++
 #include <iostream>
