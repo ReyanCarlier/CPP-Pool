@@ -123,4 +123,5 @@ int	main(void)
 }
 ```
 Dans notre exemple 1, la conversion sera un succès, car le type réel de **b** est en réalité Child1.
+
 Dans notre exemple 2, la conversion va échouer, car Child2 n'est pas le type réel de **b**.
