@@ -59,7 +59,7 @@ int	main(void)
 	Child1 *	c = b;  // Démotion implicite -> NON
 	Child2 * 	d = static_cast<Child2 *>(b); -> // Démotion explicite -> OK
 
-	Unrelated * e = static_cast<Unrelated *>(&a); // Conversion explicite -> NON
+	Unrelated *	e = static_cast<Unrelated *>(&a); // Conversion explicite -> NON
 
 	return 0;
 }
@@ -140,8 +140,8 @@ int	main(void) {
 	float	a = 420.042f; // Valeur de référence
 
 	void *	b = &a; // Promotion implicite -> OK
-	int	*	c = reinterpret_cast<int *>(b); // Démotion explicite -> OK
-	int	&	d = reinterpret_cast<int &>(b); // Démotion explicite -> OK
+	int *	c = reinterpret_cast<int *>(b); // Démotion explicite -> OK
+	int &	d = reinterpret_cast<int &>(b); // Démotion explicite -> OK
 
 	return 0;
 }
