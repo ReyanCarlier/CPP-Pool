@@ -6,7 +6,7 @@ CXX = c++
 
 TARGET = identifyme
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Wshadow -g3
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 ################################################################################
 #                                   SOURCES                                    #
