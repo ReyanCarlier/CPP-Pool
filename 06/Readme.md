@@ -125,3 +125,30 @@ int	main(void)
 Dans notre exemple 1, la conversion sera un succès, car le type réel de **b** est en réalité Child1.
 
 Dans notre exemple 2, la conversion va échouer, car Child2 n'est pas le type réel de **b**.
+
+**REINTERPRET CAST**
+====================
+
+Ce type de cast permet de réaliser des réinterprétations, des upcasts et des downcasts.
+Il sera possible de réinterpreter n'importe quelle adresse vers n'importe quelle autre adresse.
+
+Exemple :
+---------
+
+```C++
+int	main(void) {
+	float	a = 420.042f; // Valeur de référence
+
+	void *	b = &a; // Promotion implicite -> OK
+	int	*	c = reinterpret_cast<int *>(b); // Démotion explicite -> OK
+	int	&	d = reinterpret_cast<int &>(b); // Démotion explicite -> OK
+
+	return 0;
+}
+```
+On récupère ici l'adresse de notre float a.
+Le reinterpret cast ne fait **aucune vérification** sémantique à la compilation.
+
+L'intérêt du reinterpret cast réside dans la réinterpretation de données.
+Par exemple, lors de la réception de données d'un réseau nous recevons un flux d'octets quelconque que l'on va stocker sur un void*, ou un buffer de mémoire non typé/brut. Le protocole du réseau nous indiquera que la donnée reçue est en réalité une suite de char, on pourra alors effectuer un reinterpret cast sur cette suite d'octets sous la forme d'un char* afin de la manipuler correctement.
+
