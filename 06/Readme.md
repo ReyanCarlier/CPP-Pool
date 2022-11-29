@@ -24,8 +24,9 @@ Promotion :
 La promotion consiste à la conversion d'une variable d'un type plus petit vers un type plus gros, sans perte de précision.
 
 
+
 **STATIC CAST**
----------------
+===============
 
 Le static cast permet de faire un certain nombre de conversions simples, mais également de pouvoir naviguer dans l'arbre d'héritage.
 La conversion est effectuée même dans le cas d'une démotion.
@@ -74,8 +75,10 @@ Il est possible de convertir une classe mère en classe enfant, avec précision 
 
 L'avantage du static cast réside dans le fait qu'il est en mesure de détecter si les deux éléments de la conversion appartiennent ou non à un même arbre d'héritage.
 
+
+
 **DYNAMIC CAST**
-----------------
+================
 
 Il s'agit du seul cast en C++ qui est exécuté au runtime (à l'exécution). Tous les autres casts sont faits à la compilation.
 Le dynamic cast ne bloquera pas la compilation du programme, mais peut échouer lors de son exécution, il devient alors possible de créer toute une gestion d'erreur dans le cas où notre dynamic cast ne fonctionnerait pas correctement.
