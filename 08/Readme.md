@@ -12,7 +12,7 @@ Listes :
 Les conteneurs `list` sont une représentation templatée des listes.
 Il est possible de faire des listes d'à peu près tout et n'importe quoi, le type des éléments de la liste est à définir lors de la déclaration de la liste.
 
-![alt text](https://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg)
+![alt text](https://www.alphacodingskills.com/cpp/img/cpp-rbegin-rend.PNG)
 
 ```C++
 std::list<T> list_name;
