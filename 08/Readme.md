@@ -114,6 +114,48 @@ int	main()
 ```
 `42`
 
+Vecteurs :
+----------
+
+Les vecteurs sont des tableaux / dictionnaires, qui peuvent contenir tout et n'importe quoi.
+
+Ils peuvent être initialisés de différentes manières :
+```C++
+#include <vector>
+
+int main()
+{
+	std::vector<int>	vector1;			// Vide
+	std::vector<int>	vector2(42, 100); 	// 42 éléments de valeur 100
+}
+```
+
 ALGORITHMS
 ==========
 
+Les algorithmes sont une collection de fonctions pré-implémentées qui peuvent intéragir sur des collections et faire des opérations standards.
+
+Exemple :
+
+```C++
+#include <iostream>
+#include <algorithm>
+#include <list>
+
+void	displayInt(int i)
+{
+	std::cout << i << std::endl;
+}
+
+int		main()
+{
+	std::list<int>	lst;
+
+	lst.push_back(4);
+	lst.push_back(2);
+
+	for_each(lst.begin(), lst.end(), displayInt);
+
+	return (0);
+}
+```
