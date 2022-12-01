@@ -6,13 +6,14 @@ CXX = c++
 
 TARGET = span
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 ################################################################################
 #                                   SOURCES                                    #
 ################################################################################
 
-SRCS_FILES	:=		main
+SRCS_FILES	:=		main \
+					Span
 
 SRCS_FILES	:= 		$(addsuffix .cpp, $(SRCS_FILES))
 
