@@ -16,7 +16,7 @@ int main()
 	}
 	Cat copy(*(Cat *)animals[0]);
 	std::cout << std::endl;
-	for (unsigned int i = 0; i < animalCount; i++)
+	for (unsigned int i = 0; i < 100; i++)
 	{
 		std::cout << std::setw(30) << std::left << copy.getBrain()->getIdea(i);
 		std::cout << std::setw(30) << std::left << ((Cat *)animals[0])->getBrain()->getIdea(i) << std::endl;
