@@ -103,6 +103,7 @@ void	Span::addNumbers(std::list<int>::iterator begin, std::list<int>::iterator e
 	while (begin != end) {
 		this->addNumber(*begin);
 		begin++;
+		this->_count++;
 	}
 }
 
