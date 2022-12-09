@@ -2,6 +2,7 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <stdlib.h>
 
 template <typename T>
 class Array {
