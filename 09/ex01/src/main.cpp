@@ -13,14 +13,6 @@ bool isDigit(const std::string &token)
     return token[0] >= '0' && token[0] <= '9';
 }
 
-/**
- * @brief Program entry for Reverse Polish Notation calculator
- * using a stack container.
- *
- * @param argc
- * @param argv
- * @return int
- */
 int main(int argc, char **argv)
 {
     if (argc != 2)
@@ -32,7 +24,6 @@ int main(int argc, char **argv)
     std::stack<std::string> stack_operator;
     std::stack<int> stack_operand;
     std::string token;
-    // Parse every token in the expression from left to right until the end
 
     size_t pos = 0;
     for (size_t i = 1; i <= expression.size(); i++)
@@ -66,7 +57,6 @@ int main(int argc, char **argv)
         std::cerr << "Invalid amount of operators." << std::endl;
         return 1;
     }
-    // Evaluate the expression using the stack container and print the result
     while (!stack_operator.empty())
     {
         int operand1 = stack_operand.top();

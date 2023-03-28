@@ -12,7 +12,8 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 #                                   SOURCES                                    #
 ################################################################################
 
-SRCS_FILES	:=		main
+SRCS_FILES	:=		main \
+					PMergeMe
 
 SRCS_FILES	:= 		$(addsuffix .cpp, $(SRCS_FILES))
 
